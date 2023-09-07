@@ -1,0 +1,19 @@
+{
+  "ruok.quality.globalquality.info" : "全局画质",
+  "ruok.quality.globalquality.tooltip" : "调整之后会降低/提高视距,画质，粒子效果等",
+  "ruok.quality.globalquality.set.ultra" : "超高",
+  "ruok.quality.globalquality.set.high" : "高",
+  "ruok.quality.globalquality.set.normal" : "普通",
+  "ruok.quality.globalquality.set.low" : "低",
+  "ruok.quality.globalquality.set.critical" : "极低",
+  "ruok.quality.globalquality.set.custom" : "自定义",
+  "ruok.quality.autoquality.info" : "自动调整画质",
+  "ruok.quality.autoquality.tooltip" : "这个设置会在进入游戏后每30秒检测你电脑状况来自动配置（共6次），但请注意，启动客户端后只会调整一次，如果还想自动调整需要你重启客户端（但没必要！）",
+  "ruok.options.pages.ruok" : "RuOK模组",
+  "ruok.quality.renderdistance.info" : "渲染生物距离",
+  "ruok.quality.renderdistance.tooltip" : "根据你设置的值，以你设置的值为半径为正方体，只渲染正方体内的生物",
+  "ruok.quality.renderEntity.info" : "生物渲染量",
+  "ruok.quality.renderEntity.tooltip" : "根据你设置的值，以你设置的“渲染生物距离”的正方体内，限制所渲染的生物数量",
+  "ruok.quality.options.block" : "%s个方块",
+  "ruok.quality.options.entity" : "%s个实体"
+}

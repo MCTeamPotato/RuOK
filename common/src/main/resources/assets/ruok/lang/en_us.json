@@ -1,0 +1,19 @@
+{
+  "ruok.quality.globalquality.info": "Global Quality",
+  "ruok.quality.globalquality.tooltip": "Adjusting this will lower/increase view distance, graphics quality, particle effects, etc.",
+  "ruok.quality.globalquality.set.ultra": "Ultra",
+  "ruok.quality.globalquality.set.high": "High",
+  "ruok.quality.globalquality.set.normal": "Normal",
+  "ruok.quality.globalquality.set.low": "Low",
+  "ruok.quality.globalquality.set.critical": "Critical",
+  "ruok.quality.globalquality.set.custom": "Custom",
+  "ruok.quality.autoquality.info": "Auto Quality",
+  "ruok.quality.autoquality.tooltip": "This setting will automatically configure based on your computer's condition every 30 seconds after entering the game (6 times in total). Note that it will only adjust once after launching the client. If you want automatic adjustments to continue, you will need to restart the client (though it's not necessary!).",
+  "ruok.options.pages.ruok": "RuOK Mod",
+  "ruok.quality.renderdistance.info": "Render Distance",
+  "ruok.quality.renderdistance.tooltip": "Based on the value you set, a cubic area with the value as the radius will be used. Only entities within this cubic area will be rendered.",
+  "ruok.quality.renderEntity.info": "Entity Rendering Amount",
+  "ruok.quality.renderEntity.tooltip": "Based on the value you set for 'Render Distance,' it limits the number of entities that will be rendered within the cubic area.",
+  "ruok.quality.options.block": "%s blocks",
+  "ruok.quality.options.entity": "%s entities"
+}
