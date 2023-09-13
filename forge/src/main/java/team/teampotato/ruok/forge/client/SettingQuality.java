@@ -4,16 +4,21 @@ import net.minecraft.client.option.AoMode;
 import net.minecraft.client.option.CloudRenderMode;
 import net.minecraft.client.option.GraphicsMode;
 import net.minecraft.client.option.ParticlesMode;
+import team.teampotato.ruok.forge.config.RuOK;
+import team.teampotato.ruok.forge.config.RuOKConfig;
 
 import static team.teampotato.ruok.forge.client.MCQuality.*;
 
 public class SettingQuality {
+    private static final RuOKConfig getConfig = RuOK.get();
 
 
     public static void Setting(QualityMode Mode) {
         if(Mode == QualityMode.CRITICAL) {
 
-            setMCViewDistance(1);//视距
+            getConfig.RenderMangroveRoots = false;
+            getConfig.RenderLeaves = false;
+            setMCViewDistance(2);//视距
             setMCMaxFps(20);//最大FPS
             setMCVsync(true);//垂直同步
             setMCParticles(ParticlesMode.MINIMAL);//粒子
@@ -24,6 +29,8 @@ public class SettingQuality {
         }
         if(Mode == QualityMode.LOW) {
 
+            getConfig.RenderMangroveRoots = true;
+            getConfig.RenderLeaves = false;
             setMCViewDistance(4);//视距
             setMCMaxFps(30);//最大FPS
             setMCVsync(true);//垂直同步
@@ -35,6 +42,8 @@ public class SettingQuality {
         }
         if (Mode == QualityMode.NORMAL) {
 
+            getConfig.RenderMangroveRoots = true;
+            getConfig.RenderLeaves = true;
             setMCViewDistance(8);//视距
             setMCMaxFps(60);//最大FPS
             setMCVsync(true);//垂直同步
@@ -46,6 +55,8 @@ public class SettingQuality {
         }
         if (Mode == QualityMode.HIGH) {
 
+            getConfig.RenderMangroveRoots = true;
+            getConfig.RenderLeaves = true;
             setMCViewDistance(16);//视距
             setMCMaxFps(120);//最大FPS
             setMCVsync(false);//垂直同步
@@ -58,6 +69,8 @@ public class SettingQuality {
         }
         if (Mode == QualityMode.ULTRA) {
 
+            getConfig.RenderMangroveRoots = true;
+            getConfig.RenderLeaves = true;
             setMCViewDistance(30);//视距
             setMCMaxFps(300);//最大FPS
             setMCVsync(false);//垂直同步

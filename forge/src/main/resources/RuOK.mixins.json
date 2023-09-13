@@ -4,14 +4,19 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "AdvancedSettingsMixin",
-    "EntityRenderDispatcherMixin",
-    "FrameRateTracker",
-    "PerformanceSettingsMixin",
-    "QualitySettingsMixin",
-    "RuOptionsMixin"
+    "Minecraft.CreateWorldScreenMixin",
+    "Minecraft.FrameRateTracker",
+    "Render.EntityRenderDispatcherMixin",
+    "Render.RenderTargetMixin",
+    "Render.WorldRendererInvoker",
+    "Sodium.AdvancedSettingsMixin",
+    "Sodium.PerformanceSettingsMixin",
+    "Sodium.QualitySettingsMixin",
+    "Sodium.SodiumGUIMixin"
   ],
   "mixins": [
+    "Render.Leaves",
+    "Render.MangroveRoots"
   ],
   "injectors": {
     "defaultRequire": 1

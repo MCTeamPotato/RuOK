@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[43,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/MCTeamPotato/RuOK/issues"
 license = "GPLv3"
 
 [[mods]]
@@ -8,7 +8,10 @@ modId = "ruokmod"
 logoFile = "icon.png"
 version = "${version}"
 displayName = "RuOK Mod"
-authors = "Awei"
+authors = '''
+MCTeamPotato
+Awei
+'''
 description = '''
 Rubidium & Sodium Mod!
 '''
@@ -39,5 +42,12 @@ side = "BOTH"
 modId = "rubidium"
 mandatory = true
 versionRange = "[0.6.2b,)"
+ordering = "AFTER"
+side = "CLIENT"
+
+[[dependencies.ruokmod]]
+modId = "cloth_config"
+mandatory = true
+versionRange = "[8.3.103,)"
 ordering = "AFTER"
 side = "CLIENT"

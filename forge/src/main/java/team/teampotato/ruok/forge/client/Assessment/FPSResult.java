@@ -1,7 +1,7 @@
 package team.teampotato.ruok.forge.client.Assessment;
 
-import team.teampotato.ruok.forge.client.RuOK;
-import team.teampotato.ruok.forge.mixins.FrameRateTracker;
+import team.teampotato.ruok.forge.config.RuOK;
+import team.teampotato.ruok.forge.mixins.Minecraft.FrameRateTracker;
 
 public class FPSResult {
     public static double CalculateFPSScore() {

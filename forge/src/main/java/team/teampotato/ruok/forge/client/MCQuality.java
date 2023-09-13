@@ -1,11 +1,8 @@
 package team.teampotato.ruok.forge.client;
 
-import me.jellysquid.mods.sodium.client.gui.SodiumOptionsGUI;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-
+import team.teampotato.ruok.forge.config.RuOK;
 
 
 //@OnlyIn(Dist.CLIENT)
