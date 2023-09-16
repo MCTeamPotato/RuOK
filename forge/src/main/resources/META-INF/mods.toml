@@ -1,0 +1,47 @@
+modLoader = "javafml"
+loaderVersion = "[34,)"
+issueTrackerURL = "https://github.com/MCTeamPotato/RuOK/issues"
+license = "GPLv3"
+
+[[mods]]
+modId = "ruokmod"
+logoFile = "icon.png"
+version = "1.3.0"
+displayName = "RuOK Mod"
+authors = '''
+MCTeamPotato
+Awei
+'''
+description = '''
+Rubidium & Sodium Mod!
+'''
+#logoFile = ""
+
+[[dependencies.ruokmod]]
+modId = "forge"
+mandatory = true
+versionRange = "[34,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ruokmod]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.16.5,)"
+ordering = "NONE"
+side = "BOTH"
+
+
+[[dependencies.ruokmod]]
+modId = "rubidium"
+mandatory = true
+versionRange = "[0.2.13,)"
+ordering = "AFTER"
+side = "CLIENT"
+
+[[dependencies.ruokmod]]
+modId = "cloth-config"
+mandatory = true
+versionRange = "[4.17.101,)"
+ordering = "AFTER"
+side = "CLIENT"
