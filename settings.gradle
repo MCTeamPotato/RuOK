@@ -8,8 +8,7 @@ pluginManagement {
 }
 
 include("common")
+
 include("forge")
-include("fabric")
 
-
-rootProject.name = "RuOK"
+rootProject.name = "RuOK-1.16.5"
