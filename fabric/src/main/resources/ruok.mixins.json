@@ -1,13 +1,26 @@
 {
   "required": true,
-  "package": "team.teampotato.ruok.fabric",
+  "package": "team.teampotato.ruok.fabric.mixins",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
-  "client": [
-  ],
   "mixins": [
+    "Minecraft.ItemStackAccessor",
+    "Render.Leaves",
+    "Render.MangroveRoots"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "Minecraft.FrameRateTracker",
+    "Minecraft.WorldRendererInvoker",
+    "Network.ClientPlayNetworkHandlerMixin",
+    "Render.ClientWorldMixin",
+    "Render.EntityRenderDispatcherMixin",
+    "Render.ItemEntityRendererMixin",
+    "Render.LightingUpdateMixin",
+    "Render.ParticleManagerMixin",
+    "Render.SignBlockEntityRendererMixin",
+    "Sodium.SodiumGUIMixin"
+  ]
 }

@@ -12,7 +12,8 @@ import team.teampotato.ruok.RuOKMod;
 
 @Mod.EventBusSubscriber(modid = RuOKMod.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RegisterKey {
-    private static final String KeyGroupRuOK = I18n.translate("ruok.options.pages.ruok");
+    private static final String KeyGroupRuOK = I18n.translate("ruok.options.pages.ruok.main");
+
     public static final KeyBinding KeyReduceDistance = new KeyBinding(
             I18n.translate("ruok.key.reducedistance"),
             InputUtil.Type.KEYSYM,

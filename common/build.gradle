@@ -27,3 +27,15 @@ publishing {
         // Add repositories to publish to here.
     }
 }
+repositories {
+    // Add repositories to publish to here.
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
+    maven { url "https://maven.shedaniel.me/" }
+
+}

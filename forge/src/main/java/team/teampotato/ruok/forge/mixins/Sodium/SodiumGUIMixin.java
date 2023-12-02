@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import team.teampotato.ruok.forge.client.Paper.RuSodiumOptionPages;
+import team.teampotato.ruok.forge.client.Pages.RuSodiumOptionPages;
 
 import java.util.List;
 
@@ -21,5 +21,6 @@ public class SodiumGUIMixin {
     @Inject(method = "<init>(Lnet/minecraft/client/gui/screen/Screen;)V", at = @At("TAIL"))
     private void addOptionPage(CallbackInfo ci){
         this.pages.add(RuSodiumOptionPages.RuOKPages());
+        this.pages.add(RuSodiumOptionPages.RuOKPagesOther());
     }
 }

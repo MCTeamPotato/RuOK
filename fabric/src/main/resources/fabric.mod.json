@@ -3,25 +3,31 @@
   "id": "ruok",
   "version": "${version}",
   "name": "RuOK Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Rubidium & Sodium Mod!",
   "authors": [
-    "Me!"
+    "Awei",
+    "MCTeamPotato"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/MCTeamPotato",
+    "sources": "https://legacy.curseforge.com/minecraft/mc-mods/ruok"
   },
+  "mixins": [
+    "ruok.mixins.json"
+  ],
   "license": "GPLv3",
   "icon": "assets/ruok/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "team.teampotato.ruok.fabric.RuOKModFabric"
+    "client": [
+      "team.teampotato.ruok.fabric.RuOKClient"
     ]
   },
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.19.2",
-    "architectury": ">=6.5.77"
+    "architectury": ">=6.5.77",
+    "cloth-config": ">=8.3.103",
+    "sodium": ">=0.4.4+build.18"
   }
 }

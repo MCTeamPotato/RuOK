@@ -7,7 +7,7 @@ import net.minecraft.text.Text;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import team.teampotato.ruok.forge.config.RuOK;
-import team.teampotato.ruok.forge.mixins.Render.WorldRendererInvoker;
+import team.teampotato.ruok.forge.mixins.Minecraft.Invoker.WorldRendererInvoker;
 
 import static team.teampotato.ruok.forge.client.Key.RegisterKey.*;
 
@@ -19,56 +19,56 @@ public class KeyInput {
         if (clientPlayer == null) return;
         if (event.phase == TickEvent.Phase.END) {
             if(KeyReduceDistance.wasPressed()) {
-                if (RuOK.get().RenderDistance > 50) {
-                    RuOK.get().RenderDistance -= 50;
+                if (RuOK.get().Render_Entities_Distance > 50) {
+                    RuOK.get().Render_Entities_Distance -= 50;
                     minecraftClient.player.sendMessage(
                             Text.of(I18n.translate("ruok.key.value.add")
                                     + I18n.translate("ruok.key.reducedistance")
                             ));
                 } else {
-                    RuOK.get().RenderDistance = 50;
+                    RuOK.get().Render_Entities_Distance = 50;
                     minecraftClient.player.sendMessage(
                             Text.of(I18n.translate("ruok.key.value.error.max"))
                     );
                 }
             }
             if(KeyAddDistance.wasPressed()) {
-                if (RuOK.get().RenderDistance < 1000) {
-                    RuOK.get().RenderDistance += 50;
+                if (RuOK.get().Render_Entities_Distance < 1000) {
+                    RuOK.get().Render_Entities_Distance += 50;
                     minecraftClient.player.sendMessage(
                             Text.of(I18n.translate("ruok.key.value.add")
                                     + I18n.translate("ruok.key.adddistance")
                             ));
                 } else {
-                    RuOK.get().RenderDistance = 1000;
+                    RuOK.get().Render_Entities_Distance = 1000;
                     minecraftClient.player.sendMessage(
                             Text.of(I18n.translate("ruok.key.value.error.max"))
                     );
                 }
             }
             if(KeyAddMaxEntities.wasPressed()) {
-                if (RuOK.get().Max_Rendered_Entities < 500) {
-                    RuOK.get().Max_Rendered_Entities += 30;
+                if (RuOK.get().Max_Rendered_LivingEntities < 500) {
+                    RuOK.get().Max_Rendered_LivingEntities += 30;
                     minecraftClient.player.sendMessage(
                             Text.of(I18n.translate("ruok.key.value.add")
                                     + I18n.translate("ruok.key.reducemaxentities")
                             ));
                 } else {
-                    RuOK.get().Max_Rendered_Entities = 500;
+                    RuOK.get().Max_Rendered_LivingEntities = 500;
                     minecraftClient.player.sendMessage(
                             Text.of(I18n.translate("ruok.key.value.error.max"))
                     );
                 }
             }
             if(KeyReduceMaxEntities.wasPressed()) {
-                if(RuOK.get().Max_Rendered_Entities > 30) {
-                    RuOK.get().Max_Rendered_Entities -= 30;
+                if(RuOK.get().Max_Rendered_LivingEntities > 30) {
+                    RuOK.get().Max_Rendered_LivingEntities -= 30;
                     minecraftClient.player.sendMessage(
                             Text.of(I18n.translate("ruok.key.value.add")
                                     + I18n.translate("ruok.key.reducemaxentities")
                             ));
                 } else {
-                    RuOK.get().Max_Rendered_Entities = 30;
+                    RuOK.get().Max_Rendered_LivingEntities = 30;
                     minecraftClient.player.sendMessage(
                             Text.of(I18n.translate("ruok.key.value.error.max"))
                     );

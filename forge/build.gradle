@@ -14,7 +14,7 @@ loom {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
 
-        mixinConfig "RuOK-common.mixins.json"
+        //mixinConfig "RuOK-common.mixins.json"
         mixinConfig "RuOK.mixins.json"
     }
 }
@@ -33,9 +33,13 @@ dependencies {
     modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
     modApi "me.shedaniel.cloth:cloth-config-forge:${project.cloth_config_version}"
 
-
+    //modImplementation "maven.modrinth:flywheel:${project.flywheel_version}"
     modImplementation "maven.modrinth:rubidium:${project.sodium_version}"
     modImplementation "maven.modrinth:embeddium:${project.embeddium_version}"
+
+    modImplementation "maven.modrinth:staaaaaaaaaaaack:1.19.2-1.4-63+forge"
+
+
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }

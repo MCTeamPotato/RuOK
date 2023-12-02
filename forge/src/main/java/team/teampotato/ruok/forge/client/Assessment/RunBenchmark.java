@@ -5,9 +5,8 @@ import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.text.Text;
 import team.teampotato.ruok.RuOKMod;
-import team.teampotato.ruok.forge.client.QualityMode;
 import team.teampotato.ruok.forge.config.RuOK;
-import team.teampotato.ruok.forge.client.SettingQuality;
+import team.teampotato.ruok.forge.util.Render.QualityUtil;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -37,19 +36,9 @@ public class RunBenchmark {
             }
         }
     }
-    /*
-    public static void someMethod() {
-        // 获取MinecraftClient实例
-        MinecraftClient client = MinecraftClient.getInstance();
-        // 获取ToastManager对象
-        ToastManager toastManager = client.getToastManager();
-        // 创建一个自定义的ProgressToast对象，并且设置进度信息为"需要砍树"
-        ProgressToast progressToast = new ProgressToast("需要砍树");
-        // 使用ToastManager对象的add方法来添加自定义的ProgressToast对象到提示栏中
-        toastManager.add(progressToast);
-    }
 
-     */
+
+
 
     private static void startTests() {
         completedTests = 0;
@@ -61,9 +50,9 @@ public class RunBenchmark {
     }
 
     private static void runSingleBenchmark() {
-        TotalBenchmarkScore += (int) CPUResult.CalculateCPUScore();
-        TotalBenchmarkScore += (int) FPSResult.CalculateFPSScore();
-        TotalBenchmarkScore += (int) RAMResult.CalculateRamScore();
+        TotalBenchmarkScore += (int) SystemResult.CalculateCPUScore();
+        TotalBenchmarkScore += (int) SystemResult.CalculateFPSScore();
+        TotalBenchmarkScore += (int) SystemResult.CalculateRamScore();
 
         completedTests++;
 
@@ -83,33 +72,38 @@ public class RunBenchmark {
     }
     public static void SetQuality() {
         if (TotalBenchmarkScore < 300) {
-            SettingQuality.Setting(QualityMode.CRITICAL);
-            RuOK.get().Max_Rendered_Entities = 64;
-            RuOK.get().RenderDistance = 48;
+            QualityUtil.Setting(RuOK.qualityMode.CRITICAL);
+            RuOK.get().Max_Rendered_LivingEntities = 64;
+            RuOK.get().Max_Rendered_EntityEntities = 128;
+            RuOK.get().Render_Entities_Distance = 48;
             SendBenchmark();
         }
         if (TotalBenchmarkScore < 600) {
-            SettingQuality.Setting(QualityMode.LOW);
-            RuOK.get().Max_Rendered_Entities = 128;
-            RuOK.get().RenderDistance = 96;
+            QualityUtil.Setting(RuOK.qualityMode.LOW);
+            RuOK.get().Max_Rendered_LivingEntities = 128;
+            RuOK.get().Max_Rendered_EntityEntities = 256;
+            RuOK.get().Render_Entities_Distance = 96;
             SendBenchmark();
         }
         if (TotalBenchmarkScore < 800) {
-            SettingQuality.Setting(QualityMode.NORMAL);
-            RuOK.get().Max_Rendered_Entities = 256;
-            RuOK.get().RenderDistance = 128;
+            QualityUtil.Setting(RuOK.qualityMode.NORMAL);
+            RuOK.get().Max_Rendered_LivingEntities = 256;
+            RuOK.get().Max_Rendered_EntityEntities = 512;
+            RuOK.get().Render_Entities_Distance = 128;
             SendBenchmark();
         }
         if (TotalBenchmarkScore < 900) {
-            SettingQuality.Setting(QualityMode.HIGH);
-            RuOK.get().Max_Rendered_Entities = 512;
-            RuOK.get().RenderDistance = 256;
+            QualityUtil.Setting(RuOK.qualityMode.HIGH);
+            RuOK.get().Max_Rendered_LivingEntities = 512;
+            RuOK.get().Max_Rendered_EntityEntities = 1000;
+            RuOK.get().Render_Entities_Distance = 256;
             SendBenchmark();
         }
         if(TotalBenchmarkScore < 1000) {
-            SettingQuality.Setting(QualityMode.ULTRA);
-            RuOK.get().Max_Rendered_Entities = 1000;
-            RuOK.get().RenderDistance = 500;
+            QualityUtil.Setting(RuOK.qualityMode.ULTRA);
+            RuOK.get().Max_Rendered_LivingEntities = 1000;
+            RuOK.get().Max_Rendered_EntityEntities = 1000;
+            RuOK.get().Render_Entities_Distance = 500;
             SendBenchmark();
         }
     }
