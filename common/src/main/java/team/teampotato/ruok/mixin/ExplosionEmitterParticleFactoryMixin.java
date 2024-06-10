@@ -9,9 +9,7 @@ import team.teampotato.ruok.config.RuOK;
 
 @Mixin(ExplosionEmitterParticle.Factory.class)
 public class ExplosionEmitterParticleFactoryMixin {
-    @Inject(method = "createParticle*",
-            at = @At("HEAD"),
-            cancellable = true)
+    @Inject(method = "createParticle*", at = @At("HEAD"), cancellable = true)
     public void onCreateParticle(CallbackInfoReturnable<ExplosionEmitterParticle> ci) { // 修改参数类型为CallbackInfoReturnable
         if (!RuOK.get().RenderTNTExplosions) {
             ci.cancel(); // 取消原方法的执行

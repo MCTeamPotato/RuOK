@@ -23,12 +23,13 @@ public class QualityUtil {
         QUALITY_SETTINGS_MAP.put(QualityMode.CRITICAL, new QualitySettings(Weather.CLOSE, false, 2, true, ParticlesMode.MINIMAL, GraphicsMode.FAST, false, CloudRenderMode.OFF, false, 64, 128, 64));
     }
 
-    public static void set(@NotNull QualityMode mode,boolean isAssessment) {
+    public static void set(@NotNull QualityMode mode, boolean isAssessment) {
         QualitySettings settings = QUALITY_SETTINGS_MAP.get(mode);
         if (settings != null) {
             applySettings(settings);
             if(isAssessment)sendMessage(mode);
         }
+        RuOK.get().QualityModes = mode;
     }
 
     private static void applySettings(QualitySettings settings) {

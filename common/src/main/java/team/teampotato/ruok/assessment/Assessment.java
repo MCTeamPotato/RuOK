@@ -17,6 +17,15 @@ public class Assessment {
 
         // 获取 CPU 主频（GHz）
         long[] freqArray = processor.getCurrentFreq();
+        double evaluation = getEvaluation(freqArray, cpuCores);
+
+        RuOKMod.LOGGER.info("This assessment: {}", evaluation);
+
+        // 设置画质模式
+        setQualityModeBasedOnEvaluation(evaluation);
+    }
+
+    private static double getEvaluation(long[] freqArray, int cpuCores) {
         double avgFreqGHz = (freqArray.length > 0) ? (freqArray[0] / 1_000_000_000.0) : 2.5; // 默认值为 2.5 GHz
 
         // 获取 JVM 内存信息（转换为 MB）
@@ -25,13 +34,11 @@ public class Assessment {
 
         // 获取 Mod 数量
         int modSize = RuOKMod.getModSize();
+        double evaluation;
+        if(modSize < 10) evaluation = (cpuCores * 0.2) + (avgFreqGHz * 15) + (jvmMemoryMB * 0.1) ;
+        else evaluation = (cpuCores * 0.5) + (avgFreqGHz * 10) + (jvmMemoryMB * 0.5) - (modSize * 0.4);
 
-        // 计算评估值
-        double evaluation = (cpuCores * 0.3) + (avgFreqGHz * 20) + (jvmMemoryMB * 0.2) + (modSize * 0.3);
-        RuOKMod.LOGGER.info("This assessment: {}", evaluation);
-
-        // 设置画质模式
-        setQualityModeBasedOnEvaluation(evaluation);
+        return evaluation;
     }
 
     private static void setQualityModeBasedOnEvaluation(double evaluation) {
