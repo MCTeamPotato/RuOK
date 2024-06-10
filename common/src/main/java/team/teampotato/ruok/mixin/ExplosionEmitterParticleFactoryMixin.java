@@ -1,8 +1,6 @@
 package team.teampotato.ruok.mixin;
 
 import net.minecraft.client.particle.ExplosionEmitterParticle;
-import net.minecraft.client.resource.language.I18n;
-import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
