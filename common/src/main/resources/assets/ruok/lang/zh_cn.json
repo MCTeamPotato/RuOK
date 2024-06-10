@@ -34,8 +34,6 @@
   "ruok.quality.renderfastitem.tooltip" : "将掉落物禁止旋转、上下来往",
   "ruok.quality.rendertntexplosions.info" : "TNT爆炸渲染",
   "ruok.quality.rendertntexplosions.tooltip" : "默认为开启，关闭后TNT爆炸将不会渲染",
-  "ruok.quality.renderlighting.info" : "光照更新",
-  "ruok.quality.renderlighting.tooltip" : "默认为开启，关闭后关照将不会更新",
   "ruok.quality.renderdisplayitem.info" : "掉落物展示名称",
   "ruok.quality.renderdisplayitem.tooltip" : "掉落物将会显示名称，例如’泥土x1‘",
   "ruok.options.pages.ruok.main" : "钌",
@@ -44,6 +42,6 @@
   "ruok.quality.renderweather.tooltip" : "可以降低质量或者关闭天气",
   "ruok.quality.renderweather.set.low" : "低",
   "ruok.quality.renderweather.set.close" : "关闭",
-  "ruok.quality.renderweather.set.normal" : "普通"
-
+  "ruok.quality.renderweather.set.normal" : "普通",
+  "ruok.key.allentityrender" : "渲染所有生物/实体"
 }

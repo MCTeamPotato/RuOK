@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "team.teampotato.ruok.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+    "ExplosionS2CPacketMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "ClientPlayNetworkHandlerMixin",
+    "ClientWorldMixin",
+    "ExplosionEmitterParticleFactoryMixin",
+    "ItemEntityRendererMixin",
+    "TntMinecartEntityRendererMixin",
+    "WorldRendererMixin",
+    "sodium.SodiumGUIMixin"
+  ]
+}

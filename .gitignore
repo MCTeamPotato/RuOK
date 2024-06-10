@@ -1,8 +1,19 @@
-# 项目排除路径
-/.gradle/
-/common/.gradle/
-/common/build/
-/fabric/.gradle/
-/fabric/build/
-/forge/.gradle/
-/forge/build/
+build/
+*.ipr
+run/
+*.iws
+out/
+*.iml
+.gradle/
+output/
+bin/
+libs/
+
+.classpath
+.project
+.idea/
+classes/
+.metadata
+.vscode
+.settings
+*.launch
