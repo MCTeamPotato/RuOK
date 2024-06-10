@@ -71,7 +71,7 @@ public class RenderUtil {
 
     private static boolean isLivingCull(@NotNull Entity entity, @NotNull Box box, List<LivingEntity> livingEntity) {
         // 如果实体不是 LivingEntity 类型，直接返回 true
-        if (!(entity instanceof LivingEntity livingEntityInstance)) return true;
+        if (!(entity instanceof LivingEntity livingEntityInstance)) return false;
         return !box.contains(entity.getPos()) &&
                     !livingEntity.contains(livingEntityInstance) &&
                     (livingEntity.indexOf(livingEntityInstance) < RuOK.get().maxLivingEntities);
@@ -79,7 +79,7 @@ public class RenderUtil {
 
     private static boolean isEntityCull(@NotNull Box box, @NotNull Entity entity, List<Entity> entityList) {
         // 如果实体列表为 null 或不包含该实体，则返回 true
-        if (entityList == null || !entityList.contains(entity)) return true;
+        if (entityList == null || !entityList.contains(entity)) return false;
         // 检查实体是否在范围内，并确保实体的索引小于最大允许的实体数量
         return !box.contains(entity.getPos()) && entityList.indexOf(entity) < RuOK.get().maxEntityEntities;
     }
