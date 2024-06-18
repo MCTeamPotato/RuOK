@@ -42,7 +42,6 @@ public class QualityUtil {
         Options.setAo(settings.ao);
         Options.setCloudRenderMode(settings.cloudRenderMode);
         Options.setEntityShadows(settings.entityShadows);
-        RuOK.get().maxLivingEntities = settings.maxLivingEntities;
         RuOK.get().maxEntityEntities = settings.maxEntityEntities;
         RuOK.get().entitiesDistance = settings.entitiesDistance;
     }

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 @Config(name = RuOKMod.MOD_NAME)
 public class RuOKConfig implements ConfigData {
-    public int maxLivingEntities = 128;
     public boolean AutoQuality = false;
     public int maxEntityEntities = 128;
     public int entitiesDistance = 64;

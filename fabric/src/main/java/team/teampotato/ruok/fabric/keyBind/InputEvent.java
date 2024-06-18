@@ -47,9 +47,9 @@ public class InputEvent {
                 newValue = clamp(currentValue + step, MIN_DISTANCE, MAX_DISTANCE);
                 RuOK.get().entitiesDistance = newValue;
             } else {
-                currentValue = RuOK.get().maxLivingEntities;
+                currentValue = RuOK.get().maxEntityEntities;
                 newValue = clamp(currentValue + step, MIN_ENTITIES, MAX_ENTITIES);
-                RuOK.get().maxLivingEntities = newValue;
+                RuOK.get().maxEntityEntities = newValue;
             }
 
             if (newValue == currentValue) {

@@ -60,10 +60,10 @@ public class SodiumOptions {
                 )
                 .setImpact(OptionImpact.HIGH)
                 .build();
-        OptionImpl<SodiumGameOptions, Integer> RenderLivingDistances = OptionImpl.createBuilder(int.class, sodiumOpts)
+        OptionImpl<SodiumGameOptions, Integer> RenderDistances = OptionImpl.createBuilder(int.class, sodiumOpts)
                 .setName(Text.translatable("ruok.quality.renderlivingdistance.info"))
                 .setTooltip(Text.translatable("ruok.quality.renderlivingdistance.tooltip"))
-                .setControl(option -> new SliderControl(option, 2, 1000, 1, ControlValueFormatter.translateVariable("ruok.quality.options.block")))
+                .setControl(option -> new SliderControl(option, 2, 128, 1, ControlValueFormatter.translateVariable("ruok.quality.options.block")))
                 .setBinding(
                         (options, value) -> {
                             RuOK.get().entitiesDistance = value;
@@ -76,21 +76,6 @@ public class SodiumOptions {
                 .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                 .build();
 
-        OptionImpl<SodiumGameOptions, Integer> RenderLivingEntity = OptionImpl.createBuilder(int.class, sodiumOpts)
-                .setName(Text.translatable("ruok.quality.renderlivingentity.info"))
-                .setTooltip(Text.translatable("ruok.quality.renderlivingentity.tooltip"))
-                .setControl(option -> new SliderControl(option, 2, 500, 1, ControlValueFormatter.translateVariable("ruok.quality.options.lightingentity")))
-                .setBinding(
-                        (options, value) -> {
-                            RuOK.get().maxLivingEntities = value;
-                            RuOK.save();
-                        },
-                        (options) -> RuOK.get().maxLivingEntities
-
-                )
-                .setImpact(OptionImpact.LOW)
-                .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
-                .build();
 
         OptionImpl<SodiumGameOptions, Integer> RenderEntityEntity = OptionImpl.createBuilder(int.class, sodiumOpts)
                 .setName(Text.translatable("ruok.quality.renderentityentity.info"))
@@ -111,9 +96,8 @@ public class SodiumOptions {
 
 
         groups.add(OptionGroup.createBuilder()
-                .add(RenderLivingDistances)//渲染实体/生物距离
-                .add(RenderLivingEntity)//渲染生物
-                .add(RenderEntityEntity)//渲染实体
+                .add(RenderDistances)//渲染实体/生物距离
+                .add(RenderEntityEntity)//实体渲染数量
                 .add(GlobalQuality)//全局画质
                 .add(AutoQuality)//画质调整
                 .build());
