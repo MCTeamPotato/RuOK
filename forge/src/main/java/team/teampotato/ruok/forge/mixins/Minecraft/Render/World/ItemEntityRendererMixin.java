@@ -27,7 +27,6 @@ import java.util.Optional;
 
 public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity> {
 
-
     protected ItemEntityRendererMixin(EntityRendererFactory.Context ctx) {
         super(ctx);
     }

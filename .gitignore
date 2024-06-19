@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # 项目排除路径
 /.gradle/
 /common/.gradle/
@@ -6,3 +7,24 @@
 /fabric/build/
 /forge/.gradle/
 /forge/build/
+=======
+build/
+*.ipr
+run/
+*.iws
+out/
+*.iml
+.gradle/
+output/
+bin/
+libs/
+
+.classpath
+.project
+.idea/
+classes/
+.metadata
+.vscode
+.settings
+*.launch
+>>>>>>> Stashed changes

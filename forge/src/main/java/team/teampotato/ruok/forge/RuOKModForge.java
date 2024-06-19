@@ -1,14 +1,18 @@
 package team.teampotato.ruok.forge;
 
+<<<<<<< Updated upstream
 import dev.architectury.platform.forge.EventBuses;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+=======
+>>>>>>> Stashed changes
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import team.teampotato.ruok.RuOKMod;
+<<<<<<< Updated upstream
 import team.teampotato.ruok.forge.client.Key.KeyInput;
 import team.teampotato.ruok.forge.config.RuOKConfig;
 
@@ -21,6 +25,20 @@ public class RuOKModForge {
         MinecraftForge.EVENT_BUS.register(KeyInput.class);
         RuOKMod.init();
 
+=======
+import team.teampotato.ruok.forge.KeyBind.InputEvent;
+import team.teampotato.ruok.forge.KeyBind.RegisterKey;
+
+@Mod(RuOKMod.MOD_ID)
+public class RuOKModForge {
+    public RuOKModForge() {
+        init();
+        MinecraftForge.EVENT_BUS.register(InputEvent.class);
+    }
+    private static void init() {
+        RegisterKey.onRegisterKey();
+        RuOKMod.init();
+        RuOKMod.setModSize(ModList.get().getMods().size());
+>>>>>>> Stashed changes
     }
 }
-

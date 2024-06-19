@@ -9,8 +9,19 @@ import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
 import me.jellysquid.mods.sodium.client.gui.options.storage.SodiumOptionsStorage;
 import net.minecraft.text.Text;
+<<<<<<< Updated upstream:forge/src/main/java/team/teampotato/ruok/forge/client/Pages/RuSodiumOptionPages.java
 import team.teampotato.ruok.forge.client.Assessment.RunBenchmark;
 import team.teampotato.ruok.forge.config.RuOK;
+=======
+import net.minecraft.text.TranslatableText;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import team.teampotato.ruok.assessment.Assessment;
+import team.teampotato.ruok.config.RuOK;
+import team.teampotato.ruok.util.QualityUtil;
+import team.teampotato.ruok.util.Render;
+import team.teampotato.ruok.util.Weather;
+>>>>>>> Stashed changes:common/src/main/java/team/teampotato/ruok/page/SodiumOptions.java
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +32,8 @@ public class RuSodiumOptionPages {
     public static OptionPage RuOKPages() {
         List<OptionGroup> groups = new ArrayList<>();
         OptionImpl<SodiumGameOptions, Boolean> AutoQuality = OptionImpl.createBuilder(Boolean.class, sodiumOpts)
-                .setName(Text.translatable("ruok.quality.autoquality.info"))
-                .setTooltip(Text.translatable("ruok.quality.autoquality.tooltip"))
+                .setName(new TranslatableText("ruok.quality.autoquality.info"))
+                .setTooltip(new TranslatableText("ruok.quality.autoquality.tooltip"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
                         (options, value) -> {
@@ -35,6 +46,7 @@ public class RuSodiumOptionPages {
                 .setImpact(OptionImpact.HIGH)
                 .build();
 
+<<<<<<< Updated upstream:forge/src/main/java/team/teampotato/ruok/forge/client/Pages/RuSodiumOptionPages.java
         OptionImpl<SodiumGameOptions, RuOK.qualityMode> GlobalQuality = OptionImpl.createBuilder(RuOK.qualityMode.class, sodiumOpts)
                 .setName(Text.translatable("ruok.quality.globalquality.info"))
                 .setTooltip(Text.translatable("ruok.quality.globalquality.tooltip"))
@@ -45,6 +57,18 @@ public class RuSodiumOptionPages {
                         Text.translatable("ruok.quality.globalquality.set.low"),
                         Text.translatable("ruok.quality.globalquality.set.critical"),
                         Text.translatable("ruok.quality.globalquality.set.custom")
+=======
+        OptionImpl<SodiumGameOptions, QualityUtil.QualityMode> GlobalQuality = OptionImpl.createBuilder(QualityUtil.QualityMode.class, sodiumOpts)
+                .setName(new TranslatableText("ruok.quality.globalquality.info"))
+                .setTooltip(new TranslatableText("ruok.quality.globalquality.tooltip"))
+                .setControl((option) -> new CyclingControl<>(option, QualityUtil.QualityMode.class, new Text[] {
+                        new TranslatableText("ruok.quality.globalquality.set.ultra"),
+                        new TranslatableText("ruok.quality.globalquality.set.high"),
+                        new TranslatableText("ruok.quality.globalquality.set.normal"),
+                        new TranslatableText("ruok.quality.globalquality.set.low"),
+                        new TranslatableText("ruok.quality.globalquality.set.critical"),
+                        new TranslatableText("ruok.quality.globalquality.set.custom")
+>>>>>>> Stashed changes:common/src/main/java/team/teampotato/ruok/page/SodiumOptions.java
                 }))
                 .setBinding(
                         (opts, value) -> {
@@ -55,10 +79,17 @@ public class RuSodiumOptionPages {
                 )
                 .setImpact(OptionImpact.HIGH)
                 .build();
+<<<<<<< Updated upstream:forge/src/main/java/team/teampotato/ruok/forge/client/Pages/RuSodiumOptionPages.java
         OptionImpl<SodiumGameOptions, Integer> RenderLivingDistances = OptionImpl.createBuilder(int.class, sodiumOpts)
                 .setName(Text.translatable("ruok.quality.renderlivingdistance.info"))
                 .setTooltip(Text.translatable("ruok.quality.renderlivingdistance.tooltip"))
                 .setControl(option -> new SliderControl(option, 2, 1000, 1, ControlValueFormatter.translateVariable("ruok.quality.options.block")))
+=======
+        OptionImpl<SodiumGameOptions, Integer> RenderDistances = OptionImpl.createBuilder(int.class, sodiumOpts)
+                .setName(new TranslatableText("ruok.quality.renderlivingdistance.info"))
+                .setTooltip(new TranslatableText("ruok.quality.renderlivingdistance.tooltip"))
+                .setControl(option -> new SliderControl(option, 2, 128, 1, ControlValueFormatter.translateVariable("ruok.quality.options.block")))
+>>>>>>> Stashed changes:common/src/main/java/team/teampotato/ruok/page/SodiumOptions.java
                 .setBinding(
                         (options, value) -> {
                             RuOK.get().Render_Entities_Distance = value;
@@ -92,9 +123,15 @@ public class RuSodiumOptionPages {
 
 
         OptionImpl<SodiumGameOptions, Integer> RenderEntityEntity = OptionImpl.createBuilder(int.class, sodiumOpts)
+<<<<<<< Updated upstream:forge/src/main/java/team/teampotato/ruok/forge/client/Pages/RuSodiumOptionPages.java
                 .setName(Text.translatable("ruok.quality.renderentityentity.info"))
                 .setTooltip(Text.translatable("ruok.quality.renderentityentity.tooltip"))
                 .setControl(option -> new SliderControl(option, 2, 500, 1, ControlValueFormatter.translateVariable("ruok.quality.options.entity")))
+=======
+                .setName(new TranslatableText("ruok.quality.renderentityentity.info"))
+                .setTooltip(new TranslatableText("ruok.quality.renderentityentity.tooltip"))
+                .setControl(option -> new SliderControl(option, 2, 512, 1, ControlValueFormatter.translateVariable("ruok.quality.options.entity")))
+>>>>>>> Stashed changes:common/src/main/java/team/teampotato/ruok/page/SodiumOptions.java
                 .setBinding(
                         (options, value) -> {
                             RuOK.get().Max_Rendered_EntityEntities = value;
@@ -116,9 +153,10 @@ public class RuSodiumOptionPages {
                 .add(GlobalQuality)//全局画质
                 .add(AutoQuality)//画质调整
                 .build());
-        return new OptionPage(Text.translatable("ruok.options.pages.ruok.main"), ImmutableList.copyOf(groups));
+        return new OptionPage(new TranslatableText("ruok.options.pages.ruok.main"), ImmutableList.copyOf(groups));
     }
-    public static OptionPage RuOKPagesOther() {
+    @Contract(" -> new")
+    public static @NotNull OptionPage RuOKPagesOther() {
         List<OptionGroup> groups = new ArrayList<>();
 
 
@@ -141,8 +179,8 @@ public class RuSodiumOptionPages {
 
 
         OptionImpl<SodiumGameOptions, Boolean> RenderTNTExplosions  = OptionImpl.createBuilder(Boolean.class, sodiumOpts)
-                .setName(Text.translatable("ruok.quality.rendertntexplosions.info"))
-                .setTooltip(Text.translatable("ruok.quality.rendertntexplosions.tooltip"))
+                .setName(new TranslatableText("ruok.quality.rendertntexplosions.info"))
+                .setTooltip(new TranslatableText("ruok.quality.rendertntexplosions.tooltip"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
                         (options, value) -> {
@@ -160,8 +198,8 @@ public class RuSodiumOptionPages {
 
         //快速物品
         OptionImpl<SodiumGameOptions, Boolean> RenderFastItem = OptionImpl.createBuilder(Boolean.class, sodiumOpts)
-                .setName(Text.translatable("ruok.quality.renderfastitem.info"))
-                .setTooltip(Text.translatable("ruok.quality.renderfastitem.tooltip"))
+                .setName(new TranslatableText("ruok.quality.renderfastitem.info"))
+                .setTooltip(new TranslatableText("ruok.quality.renderfastitem.tooltip"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
                         (options, value) -> {
@@ -178,8 +216,8 @@ public class RuSodiumOptionPages {
 
         //快速物品
         OptionImpl<SodiumGameOptions, Boolean> RenderDisplayItem = OptionImpl.createBuilder(Boolean.class, sodiumOpts)
-                .setName(Text.translatable("ruok.quality.renderdisplayitem.info"))
-                .setTooltip(Text.translatable("ruok.quality.renderdisplayitem.tooltip"))
+                .setName(new TranslatableText("ruok.quality.renderdisplayitem.info"))
+                .setTooltip(new TranslatableText("ruok.quality.renderdisplayitem.tooltip"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
                         (options, value) -> {
@@ -193,6 +231,7 @@ public class RuSodiumOptionPages {
                 .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                 .build();
         //天气渲染
+<<<<<<< Updated upstream:forge/src/main/java/team/teampotato/ruok/forge/client/Pages/RuSodiumOptionPages.java
         OptionImpl<SodiumGameOptions, RuOK.weather> RenderWeather = OptionImpl.createBuilder(RuOK.weather.class, sodiumOpts)
                 .setName(Text.translatable("ruok.quality.renderweather.info"))
                 .setTooltip(Text.translatable("ruok.quality.renderweather.tooltip"))
@@ -200,6 +239,15 @@ public class RuSodiumOptionPages {
                         Text.translatable("ruok.quality.renderweather.set.normal"),
                         Text.translatable("ruok.quality.renderweather.set.low"),
                         Text.translatable("ruok.quality.renderweather.set.close")
+=======
+        OptionImpl<SodiumGameOptions, Weather> RenderWeather = OptionImpl.createBuilder(Weather.class, sodiumOpts)
+                .setName(new TranslatableText("ruok.quality.renderweather.info"))
+                .setTooltip(new TranslatableText("ruok.quality.renderweather.tooltip"))
+                .setControl((option) -> new CyclingControl<>(option, Weather.class, new Text[] {
+                        new TranslatableText("ruok.quality.renderweather.set.normal"),
+                        new TranslatableText("ruok.quality.renderweather.set.low"),
+                        new TranslatableText("ruok.quality.renderweather.set.close")
+>>>>>>> Stashed changes:common/src/main/java/team/teampotato/ruok/page/SodiumOptions.java
                 }))
                 .setBinding(
                         (opts, value) -> {
@@ -221,7 +269,7 @@ public class RuSodiumOptionPages {
                 .add(RenderDisplayItem)//掉落物展示名称
                 .build()
         );
-        return new OptionPage(Text.translatable("ruok.options.pages.ruok.other"), ImmutableList.copyOf(groups));
+        return new OptionPage(new TranslatableText("ruok.options.pages.ruok.other"), ImmutableList.copyOf(groups));
     }
 
 }

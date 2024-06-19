@@ -1,6 +1,10 @@
 {
   "ruok.quality.globalquality.info": "Global Quality",
+<<<<<<< Updated upstream
   "ruok.quality.globalquality.tooltip": "Adjusting this will decrease/increase render distance, graphics quality, particle effects, etc.",
+=======
+  "ruok.quality.globalquality.tooltip": "Adjusting this will reduce/increase render distance, quality, particle effects, etc.",
+>>>>>>> Stashed changes
   "ruok.quality.globalquality.set.ultra": "Ultra",
   "ruok.quality.globalquality.set.high": "High",
   "ruok.quality.globalquality.set.normal": "Normal",
@@ -15,19 +19,29 @@
   "ruok.quality.renderlivingentity.info": "Entity Render Amount",
   "ruok.quality.renderlivingentity.tooltip": "Based on your 'Render Living/Entity Distance' setting, this determines the number of entities currently being rendered.",
   "ruok.quality.options.block": "%s blocks",
+<<<<<<< Updated upstream
   "ruok.quality.options.lightingentity": "%s entities",
   "ruok.quality.renderleaves.tooltip": "Cull leaves from inside rendering",
   "ruok.quality.renderleaves.info": "Leaves Culling",
   "ruok.quality.rendermangroveroots.info": "Mangrove Roots Culling",
   "ruok.quality.rendermangroveroots.tooltip": "Cull mangrove roots from inside rendering",
   "ruok.key.reducedistance": "Decrease Render Distance",
+=======
+  "ruok.quality.options.lightingentity": "%s mobs",
+  "ruok.key.reducedistance": "Reduce Render Distance",
+>>>>>>> Stashed changes
   "ruok.key.adddistance": "Increase Render Distance",
   "ruok.key.addmaxentities": "Increase Maximum Entity Render Count",
   "ruok.key.reducemaxentities": "Decrease Maximum Entity Render Distance",
   "ruok.key.reloadinvoker": "Reload Lighting",
   "ruok.key.value.add": "Adding",
+<<<<<<< Updated upstream
   "ruok.key.value.error.max": "Unable to add/remove, value is at maximum/minimum!",
   "ruok.benchmark.value": "Benchmark completed. Your current score is:",
+=======
+  "ruok.key.value.error.max": "Cannot increase or decrease, value is at maximum or none!",
+  "ruok.benchmark.value": "Benchmark complete. Your current score is:",
+>>>>>>> Stashed changes
   "ruok.benchmark.run": "Start Benchmark",
   "ruok.quality.renderrain.info": "Render Rain",
   "ruok.quality.renderrain.tooltip": "Disable rain rendering",
@@ -42,9 +56,26 @@
   "ruok.quality.renderentityentity.info": "Entity Render Amount",
   "ruok.quality.renderentityentity.tooltip": "Based on your 'Render Living/Entity Distance' setting, this determines the number of entities currently being rendered.",
   "ruok.quality.options.entity": "%s entities",
+<<<<<<< Updated upstream
   "ruok.quality.options.tick": "%s ticks",
   "ruok.quality.renderfastitem.info": "Comedic Item Rendering",
   "ruok.quality.renderfastitem.tooltip": "Changes item rendering to be aligned with the player's head (actually a BUG, but it's <funny>, so it's kept, also kind of an optimization).",
   "ruok.quality.renderitemcastshadows.info": "Item Shadows",
   "ruok.quality.renderitemcastshadows.tooltip": "Disable item shadows"
+=======
+  "ruok.quality.renderfastitem.info": "Simple Item Render",
+  "ruok.quality.renderfastitem.tooltip": "Disables item rotation and bobbing",
+  "ruok.quality.rendertntexplosions.info": "TNT Explosion Render",
+  "ruok.quality.rendertntexplosions.tooltip": "Enabled by default, disable to not render TNT explosions",
+  "ruok.quality.renderdisplayitem.info": "Item Display Name",
+  "ruok.quality.renderdisplayitem.tooltip": "Items will display names, e.g., 'Dirt x1'",
+  "ruok.options.pages.ruok.main": "RUOK",
+  "ruok.options.pages.ruok.other": "RUOK - Misc",
+  "ruok.quality.renderweather.info": "Weather Render Quality",
+  "ruok.quality.renderweather.tooltip": "Lower the quality or disable weather rendering",
+  "ruok.quality.renderweather.set.low": "Low",
+  "ruok.quality.renderweather.set.close": "Off",
+  "ruok.quality.renderweather.set.normal": "Normal",
+  "ruok.key.allentityrender": "Render All Entities"
+>>>>>>> Stashed changes
 }

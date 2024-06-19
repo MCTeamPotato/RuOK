@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[43,)"
+loaderVersion = "[40,)"
 issueTrackerURL = "https://github.com/MCTeamPotato/RuOK/issues"
 license = "GPLv3"
 
@@ -20,20 +20,21 @@ Rubidium & Sodium Mod!
 [[dependencies.ruokmod]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[40,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ruokmod]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,)"
+versionRange = "[1.18.2,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ruokmod]]
 modId = "architectury"
 mandatory = true
+<<<<<<< Updated upstream
 versionRange = "[6.5.77,)"
 ordering = "AFTER"
 side = "BOTH"
@@ -42,12 +43,15 @@ side = "BOTH"
 modId = "rubidium"
 mandatory = true
 versionRange = "[0.6.2b,)"
+=======
+versionRange = "[0.3.18+mc1.18.2,)"
+>>>>>>> Stashed changes
 ordering = "AFTER"
 side = "CLIENT"
 
 [[dependencies.ruokmod]]
 modId = "cloth_config"
 mandatory = true
-versionRange = "[8.3.103,)"
+versionRange = "[6.5.116,)"
 ordering = "AFTER"
 side = "CLIENT"

@@ -28,12 +28,17 @@ public class TntMinecartEntityRendererMixin {
     private void onTntExplosionsRender(TntMinecartEntity arg, float f, BlockState arg2, MatrixStack arg3, VertexConsumerProvider arg4, int i, CallbackInfo ci) {
         if (!RuOK.get().RenderTNTExplosions) ci.cancel();
     }
+<<<<<<< Updated upstream:forge/src/main/java/team/teampotato/ruok/forge/mixins/Minecraft/Render/World/TntMinecartEntityRendererMixin.java
     @Inject(
             method = "renderFlashingBlock",
             at = @At("HEAD"),
             cancellable = true
     )
     private static void onRenderFlashingBlock(BlockRenderManager blockRenderManager, BlockState state, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, boolean drawFlash, CallbackInfo ci) {
+=======
+    @Inject(method = "renderFlashingBlock", at = @At("HEAD"), cancellable = true)
+    private static void onRenderFlashingBlock(BlockState blockState, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, boolean drawFlash, CallbackInfo ci) {
+>>>>>>> Stashed changes:common/src/main/java/team/teampotato/ruok/mixin/TntMinecartEntityRendererMixin.java
         if (!RuOK.get().RenderTNTExplosions) ci.cancel();
     }
 
