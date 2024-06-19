@@ -1,7 +1,10 @@
 package team.teampotato.ruok.util;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.*;
+import net.minecraft.client.option.CloudRenderMode;
+import net.minecraft.client.option.GameOptions;
+import net.minecraft.client.option.GraphicsMode;
+import net.minecraft.client.option.ParticlesMode;
 
 public class Options {
     private static final GameOptions mc = MinecraftClient.getInstance().options;

@@ -1,5 +1,6 @@
 package team.teampotato.ruok.assessment;
 
+import org.jetbrains.annotations.NotNull;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import team.teampotato.ruok.RuOKMod;
@@ -25,7 +26,7 @@ public class Assessment {
         setQualityModeBasedOnEvaluation(evaluation);
     }
 
-    private static double getEvaluation(long[] freqArray, int cpuCores) {
+    private static double getEvaluation(long @NotNull [] freqArray, int cpuCores) {
         double avgFreqGHz = (freqArray.length > 0) ? (freqArray[0] / 1_000_000_000.0) : 2.5; // 默认值为 2.5 GHz
 
         // 获取 JVM 内存信息（转换为 MB）

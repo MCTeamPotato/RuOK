@@ -14,14 +14,13 @@ import net.minecraft.text.Text;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import team.teampotato.ruok.config.RuOK;
-import team.teampotato.ruok.util.RenderUtil;
+import team.teampotato.ruok.util.Render;
 
 import java.util.Optional;
 
@@ -53,7 +52,7 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
     @Inject(method = "render(Lnet/minecraft/entity/ItemEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V", at = @At("HEAD"))
     private void renderItemCount(ItemEntity arg, float g, float h, MatrixStack matrices, VertexConsumerProvider arg3, int l, CallbackInfo ci) {
         if(RuOK.get().RenderDisplayItem) {
-            Optional<Pair<Text, String>> itemCountText = RenderUtil.getTotalCountForDisplay(arg);
+            Optional<Pair<Text, String>> itemCountText = Render.getTotalCountForDisplay(arg);
 
             if (itemCountText.isPresent()) {
                 Pair<Text, String> pair = itemCountText.get();

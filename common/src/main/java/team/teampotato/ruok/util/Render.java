@@ -2,34 +2,68 @@ package team.teampotato.ruok.util;
 
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.MinecraftClient;
-
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.mob.GhastEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.Box;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.teampotato.ruok.config.RuOK;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 
-public class RenderUtil {
+public class Render {
+    private static final HashSet<EntityType<?>> blackListCache = new HashSet<>();
+    private static final HashSet<EntityType<?>> whiteListCache = new HashSet<>();
+    private static int maxRenderedEntities; // 最大渲染生物数量
+    private static double[] closestDistances = new double[maxRenderedEntities]; // 记录最近生物的距离
+    private static Entity[] closestEntities = new Entity[maxRenderedEntities]; // 记录最近生物
+
+    static {
+        initializeArrays();
+        initMobList();
+    }
+    // 初始化数组
+    private static void initializeArrays() {
+        maxRenderedEntities = RuOK.get().maxEntityEntities;//将此部分放到Init防止多次调用
+        closestDistances = new double[maxRenderedEntities];
+        closestEntities = new Entity[maxRenderedEntities];
+        Arrays.fill(closestDistances, Double.MAX_VALUE);
+        Arrays.fill(closestEntities, null);
+    }
+    // 初始化生物列表
+    private static void initMobList() {
+        List<String> blackConfig = RuOK.get().blackListedEntities;
+        List<String> whiteConfig = RuOK.get().whiteListedEntities;
+        for (String bc : blackConfig) {
+            Optional<EntityType<?>> entityTypeOpt = EntityType.get(bc);
+            if (entityTypeOpt.isPresent()) {
+                EntityType<?> entityType = entityTypeOpt.get();
+                blackListCache.add(entityType);
+            }
+        }
+        for (String wc : whiteConfig) {
+            Optional<EntityType<?>> entityTypeOpt = EntityType.get(wc);
+            if (entityTypeOpt.isPresent()) {
+                EntityType<?> entityType = entityTypeOpt.get();
+                whiteListCache.add(entityType);
+            }
+        }
+    }
+
     public static boolean isBlacklisted(@NotNull Entity entity) {
-        // 检查生物是否在黑名单中
-        List<String> config = RuOK.get().blackListedEntities;
-        String entityName = Objects.requireNonNull(EntityType.getId(entity.getType())).toString();
-        return config.contains(entityName); // 返回 true 表示在黑名单中 - 删除渲染
+        return blackListCache.contains(entity.getType()); // 返回 true 表示在黑名单中 - 删除渲染
     }
 
     public static boolean isWhitelisted(@NotNull Entity entity) {
-        // 检查生物是否在白名单中
-        List<String> config = RuOK.get().whiteListedEntities;
-        String entityName = Objects.requireNonNull(EntityType.getId(entity.getType())).toString();
-        return config.contains(entityName); // 返回 true 表示在白名单中 - 添加渲染
+        return whiteListCache.contains(entity.getType()); // 返回 true 表示在白名单中 - 添加渲染
     }
 
 
@@ -53,9 +87,13 @@ public class RenderUtil {
         else return Color.LightGreen;
     }
 
-    private static final int MAX_RENDERED_ENTITIES = RuOK.get().maxEntityEntities; // 最大渲染生物数量
-    private static final double[] closestDistances = new double[MAX_RENDERED_ENTITIES]; // 记录最近生物的距离
-    private static final Entity[] closestEntities = new Entity[MAX_RENDERED_ENTITIES]; // 记录最近生物
+
+
+    // 重新加载方法，更新最大渲染生物数量
+    public static void reloadRenderEntity() {
+        maxRenderedEntities = RuOK.get().maxEntityEntities;
+        initializeArrays();
+    }
 
     public static void entityCull(Entity entity, CallbackInfo ci) {
         MinecraftClient mc = MinecraftClient.getInstance();
@@ -64,6 +102,16 @@ public class RenderUtil {
         if (world != null && mc.player != null) {
             double distanceToPlayer = entity.squaredDistanceTo(mc.player);
 
+            // 白名单优先：如果实体在白名单中，则保留渲染
+            if (isWhitelisted(entity)) {
+                return;
+            }
+
+            // 黑名单检查：如果实体在黑名单中，则取消渲染
+            if (isBlacklisted(entity)) {
+                ci.cancel();
+                return;
+            }
 
             // 检查是否在最近的生物列表中
             boolean inClosestEntities = isInClosestEntities(entity, distanceToPlayer);
@@ -77,14 +125,14 @@ public class RenderUtil {
 
     private static boolean isInClosestEntities(Entity entity, double distanceToPlayer) {
         // 遍历最近的生物列表，检查是否在列表中
-        for (int i = 0; i < MAX_RENDERED_ENTITIES; i++) {
+        for (int i = 0; i < maxRenderedEntities; i++) {
             if (closestEntities[i] == entity) {
                 return true;
             }
         }
 
         // 如果不在列表中，则尝试将其加入列表
-        for (int i = 0; i < MAX_RENDERED_ENTITIES; i++) {
+        for (int i = 0; i < maxRenderedEntities; i++) {
             if (closestEntities[i] == null) { // 找到空位
                 closestEntities[i] = entity;
                 closestDistances[i] = distanceToPlayer;
@@ -102,34 +150,11 @@ public class RenderUtil {
 
     private static void shiftArrayElements(int startIndex) {
         // 向后移动数组元素，为更近的生物腾出位置
-        for (int i = MAX_RENDERED_ENTITIES - 1; i > startIndex; i--) {
+        for (int i = maxRenderedEntities - 1; i > startIndex; i--) {
             closestEntities[i] = closestEntities[i - 1];
             closestDistances[i] = closestDistances[i - 1];
         }
     }
-    /*
-    public static void entityCull(Entity entity, CallbackInfo ci) {
-        MinecraftClient mc = MinecraftClient.getInstance();
-        ClientWorld world = mc.world;
-
-        if (world != null && mc.player != null) {
-            // 如果实体距离玩家超过指定的距离，则取消渲染
-            if (playerXYZInEntity(mc.player, entity, RuOK.get().entitiesDistance)) {
-                ci.cancel();
-            }
-        }
-    }
-
-    private static boolean playerXYZInEntity(@NotNull ClientPlayerEntity player, @NotNull Entity entity, double distance) {
-        double deltaX = player.getX() - entity.getX();
-        double deltaY = player.getY() - entity.getY();
-        double deltaZ = player.getZ() - entity.getZ();
-        double distanceSquared = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
-        return distanceSquared > distance * distance;
-    }
-
-
-     */
 
     private static boolean modsCullEntity(@NotNull Entity entity){
         String getClass = entity.getClass().getName();
@@ -139,8 +164,5 @@ public class RenderUtil {
                         || entity instanceof EnderDragonEntity;
 
     }
-
-
-
 
 }

@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import team.teampotato.ruok.assessment.Assessment;
 import team.teampotato.ruok.config.RuOK;
 import team.teampotato.ruok.util.QualityUtil;
+import team.teampotato.ruok.util.Render;
 import team.teampotato.ruok.util.Weather;
 
 import java.util.ArrayList;
@@ -80,11 +81,12 @@ public class SodiumOptions {
         OptionImpl<SodiumGameOptions, Integer> RenderEntityEntity = OptionImpl.createBuilder(int.class, sodiumOpts)
                 .setName(Text.translatable("ruok.quality.renderentityentity.info"))
                 .setTooltip(Text.translatable("ruok.quality.renderentityentity.tooltip"))
-                .setControl(option -> new SliderControl(option, 2, 500, 1, ControlValueFormatter.translateVariable("ruok.quality.options.entity")))
+                .setControl(option -> new SliderControl(option, 2, 512, 1, ControlValueFormatter.translateVariable("ruok.quality.options.entity")))
                 .setBinding(
                         (options, value) -> {
                             RuOK.get().maxEntityEntities = value;
                             RuOK.save();
+                            Render.reloadRenderEntity();
                         },
                         (options) -> RuOK.get().maxEntityEntities
 
@@ -99,7 +101,7 @@ public class SodiumOptions {
                 .add(RenderDistances)//渲染实体/生物距离
                 .add(RenderEntityEntity)//实体渲染数量
                 .add(GlobalQuality)//全局画质
-                .add(AutoQuality)//画质调整
+               // .add(AutoQuality)//画质调整
                 .build());
         return new OptionPage(Text.translatable("ruok.options.pages.ruok.main"), ImmutableList.copyOf(groups));
     }
