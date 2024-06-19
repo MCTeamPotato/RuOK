@@ -1,27 +1,21 @@
 {
   "required": true,
-  "package": "team.teampotato.ruok.forge.mixins",
+  "package": "team.teampotato.ruok.forge.mixin",
   "compatibilityLevel": "JAVA_8",
   "minVersion": "0.8",
-  "client": [
-    "Minecraft.FrameRateTracker",
-    "Minecraft.WorldRendererInvoker",
-    "Network.ClientPlayNetworkHandlerMixin",
-    "Render.ClientWorldMixin",
-    "Render.EntityRenderDispatcherMixin",
-    "Render.ItemEntityRendererMixin",
-    "Render.LightingUpdateMixin",
-    "Render.SignBlockEntityRendererMixin",
-    "Sodium.AdvancedSettingsMixin",
-    "Sodium.PerformanceSettingsMixin",
-    "Sodium.QualitySettingsMixin",
-    "Sodium.SodiumGUIMixin"
-  ],
   "mixins": [
-    "Minecraft.ItemStackAccessor",
-    "Render.Leaves"
+    "ExplosionS2CPacketMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "ClientPlayNetworkHandlerMixin",
+    "ClientWorldMixin",
+    "ExplosionEmitterParticleFactoryMixin",
+    "ItemEntityRendererMixin",
+    "TntMinecartEntityRendererMixin",
+    "WorldRendererMixin",
+    "sodium.SodiumGUIMixin"
+  ]
 }

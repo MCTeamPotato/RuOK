@@ -4,17 +4,11 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    forge()
+    fabric()
 }
 
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
-
-    forge {
-        convertAccessWideners = true
-        extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
-        mixinConfig "RuOK.mixins.json"
-    }
 }
 
 configurations {
@@ -22,49 +16,25 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin since it *excludes* files.
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentForge.extendsFrom common
+    developmentFabric.extendsFrom common
 }
-repositories {
-    // Add repositories to publish to here.
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
-        content {
-            includeGroup "maven.modrinth"
-        }
-    }
-    maven {
-        url "https://cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-
-
-    maven { url "https://maven.shedaniel.me/" }
-
-}
-
 
 dependencies {
-    forge "net.minecraftforge:forge:${rootProject.forge_version}"
-    modImplementation "maven.modrinth:cloth-config:${project.cloth_config_version}"
-    modImplementation "maven.modrinth:embeddium:${project.embeddium_version}"
-
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
 
 processResources {
     inputs.property "version", project.version
 
-    filesMatching("META-INF/mods.toml") {
+    filesMatching("fabric.mod.json") {
         expand "version": project.version
     }
 }
 
 shadowJar {
-    exclude "fabric.mod.json"
     exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
@@ -72,6 +42,7 @@ shadowJar {
 }
 
 remapJar {
+    injectAccessWidener = true
     input.set shadowJar.archiveFile
     dependsOn shadowJar
 }
@@ -90,7 +61,7 @@ components.java {
 
 publishing {
     publications {
-        mavenForge(MavenPublication) {
+        mavenFabric(MavenPublication) {
             artifactId = rootProject.archives_base_name + "-" + project.name
             from components.java
         }
