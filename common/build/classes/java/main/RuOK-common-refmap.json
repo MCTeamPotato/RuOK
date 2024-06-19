@@ -1,0 +1,60 @@
+{
+  "mappings": {
+    "team/teampotato/ruok/mixin/ClientPlayNetworkHandlerMixin": {
+      "onEntitySpawn": "Lnet/minecraft/class_634;method_11112(Lnet/minecraft/class_2604;)V"
+    },
+    "team/teampotato/ruok/mixin/ExplosionEmitterParticleFactoryMixin": {
+      "createParticle*": "Lnet/minecraft/class_689$class_690;method_3037(Lnet/minecraft/class_2400;Lnet/minecraft/class_638;DDDDDD)Lnet/minecraft/class_703;"
+    },
+    "team/teampotato/ruok/mixin/ExplosionS2CPacketMixin": {
+      "apply(Lnet/minecraft/network/listener/ClientPlayPacketListener;)V": "Lnet/minecraft/class_2664;method_11480(Lnet/minecraft/class_2602;)V"
+    },
+    "team/teampotato/ruok/mixin/ItemEntityRendererMixin": {
+      "Lnet/minecraft/client/util/math/MatrixStack;multiply(Lnet/minecraft/util/math/Quaternion;)V": "Lnet/minecraft/class_4587;method_22907(Lnet/minecraft/class_1158;)V",
+      "Lnet/minecraft/client/util/math/MatrixStack;translate(DDD)V": "Lnet/minecraft/class_4587;method_22904(DDD)V",
+      "getRenderedAmount": "Lnet/minecraft/class_916;method_3998(Lnet/minecraft/class_1799;)I",
+      "render(Lnet/minecraft/entity/ItemEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V": "Lnet/minecraft/class_916;method_3996(Lnet/minecraft/class_1542;FFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
+      "render*": "Lnet/minecraft/class_916;method_3996(Lnet/minecraft/class_1542;FFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+    },
+    "team/teampotato/ruok/mixin/TntMinecartEntityRendererMixin": {
+      "renderBlock(Lnet/minecraft/entity/vehicle/TntMinecartEntity;FLnet/minecraft/block/BlockState;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V": "Lnet/minecraft/class_957;method_4137(Lnet/minecraft/class_1701;FLnet/minecraft/class_2680;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
+      "renderFlashingBlock": "Lnet/minecraft/class_957;method_23190(Lnet/minecraft/class_776;Lnet/minecraft/class_2680;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;IZ)V"
+    },
+    "team/teampotato/ruok/mixin/WorldRendererMixin": {
+      "renderEntity": "Lnet/minecraft/class_761;method_22977(Lnet/minecraft/class_1297;DDDFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;)V"
+    },
+    "team/teampotato/ruok/mixin/sodium/SodiumGUIMixin": {
+      "<init>(Lnet/minecraft/client/gui/screen/Screen;)V": "Lme/jellysquid/mods/sodium/client/gui/SodiumOptionsGUI;<init>(Lnet/minecraft/class_437;)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "team/teampotato/ruok/mixin/ClientPlayNetworkHandlerMixin": {
+        "onEntitySpawn": "Lnet/minecraft/class_634;method_11112(Lnet/minecraft/class_2604;)V"
+      },
+      "team/teampotato/ruok/mixin/ExplosionEmitterParticleFactoryMixin": {
+        "createParticle*": "Lnet/minecraft/class_689$class_690;method_3037(Lnet/minecraft/class_2400;Lnet/minecraft/class_638;DDDDDD)Lnet/minecraft/class_703;"
+      },
+      "team/teampotato/ruok/mixin/ExplosionS2CPacketMixin": {
+        "apply(Lnet/minecraft/network/listener/ClientPlayPacketListener;)V": "Lnet/minecraft/class_2664;method_11480(Lnet/minecraft/class_2602;)V"
+      },
+      "team/teampotato/ruok/mixin/ItemEntityRendererMixin": {
+        "Lnet/minecraft/client/util/math/MatrixStack;multiply(Lnet/minecraft/util/math/Quaternion;)V": "Lnet/minecraft/class_4587;method_22907(Lnet/minecraft/class_1158;)V",
+        "Lnet/minecraft/client/util/math/MatrixStack;translate(DDD)V": "Lnet/minecraft/class_4587;method_22904(DDD)V",
+        "getRenderedAmount": "Lnet/minecraft/class_916;method_3998(Lnet/minecraft/class_1799;)I",
+        "render(Lnet/minecraft/entity/ItemEntity;FFLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V": "Lnet/minecraft/class_916;method_3996(Lnet/minecraft/class_1542;FFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
+        "render*": "Lnet/minecraft/class_916;method_3996(Lnet/minecraft/class_1542;FFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V"
+      },
+      "team/teampotato/ruok/mixin/TntMinecartEntityRendererMixin": {
+        "renderBlock(Lnet/minecraft/entity/vehicle/TntMinecartEntity;FLnet/minecraft/block/BlockState;Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;I)V": "Lnet/minecraft/class_957;method_4137(Lnet/minecraft/class_1701;FLnet/minecraft/class_2680;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;I)V",
+        "renderFlashingBlock": "Lnet/minecraft/class_957;method_23190(Lnet/minecraft/class_776;Lnet/minecraft/class_2680;Lnet/minecraft/class_4587;Lnet/minecraft/class_4597;IZ)V"
+      },
+      "team/teampotato/ruok/mixin/WorldRendererMixin": {
+        "renderEntity": "Lnet/minecraft/class_761;method_22977(Lnet/minecraft/class_1297;DDDFLnet/minecraft/class_4587;Lnet/minecraft/class_4597;)V"
+      },
+      "team/teampotato/ruok/mixin/sodium/SodiumGUIMixin": {
+        "<init>(Lnet/minecraft/client/gui/screen/Screen;)V": "Lme/jellysquid/mods/sodium/client/gui/SodiumOptionsGUI;<init>(Lnet/minecraft/class_437;)V"
+      }
+    }
+  }
+}
