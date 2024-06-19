@@ -11,9 +11,4 @@ include("common")
 include("fabric")
 include("forge")
 
-<<<<<<< Updated upstream
-
-rootProject.name = "RuOK"
-=======
 rootProject.name = "RuOK-1.18.2"
->>>>>>> Stashed changes

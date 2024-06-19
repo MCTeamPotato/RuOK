@@ -13,9 +13,8 @@ MCTeamPotato
 Awei
 '''
 description = '''
-Rubidium & Sodium Mod!
+Embeddium & Sodium Mod!
 '''
-#logoFile = ""
 
 [[dependencies.ruokmod]]
 modId = "forge"
@@ -32,20 +31,9 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.ruokmod]]
-modId = "architectury"
+modId = "embeddium"
 mandatory = true
-<<<<<<< Updated upstream
-versionRange = "[6.5.77,)"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies.ruokmod]]
-modId = "rubidium"
-mandatory = true
-versionRange = "[0.6.2b,)"
-=======
 versionRange = "[0.3.18+mc1.18.2,)"
->>>>>>> Stashed changes
 ordering = "AFTER"
 side = "CLIENT"
 

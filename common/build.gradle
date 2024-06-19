@@ -5,16 +5,6 @@ architectury {
 loom {
     accessWidenerPath = file("src/main/resources/RuOK.accesswidener")
 }
-<<<<<<< Updated upstream
-
-dependencies {
-    // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
-    // Do NOT use other classes from fabric loader
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    // Remove the next line if you don't want to depend on the API
-    modApi "dev.architectury:architectury:${rootProject.architectury_version}"
-}
-=======
 
 dependencies {
     // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
@@ -45,7 +35,6 @@ repositories {
 
 }
 
->>>>>>> Stashed changes
 
 publishing {
     publications {
@@ -59,16 +48,4 @@ publishing {
     repositories {
         // Add repositories to publish to here.
     }
-}
-repositories {
-    // Add repositories to publish to here.
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
-        content {
-            includeGroup "maven.modrinth"
-        }
-    }
-    maven { url "https://maven.shedaniel.me/" }
-
 }
