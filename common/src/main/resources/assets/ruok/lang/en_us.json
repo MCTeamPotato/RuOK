@@ -1,31 +1,12 @@
 {
   "ruok.quality.globalquality.info": "Global Quality",
-<<<<<<< Updated upstream
-  "ruok.quality.globalquality.tooltip": "Adjusts settings that affect render distance, graphics quality, and particle effects.",
-=======
   "ruok.quality.globalquality.tooltip": "Adjusting this will reduce/increase render distance, quality, particle effects, etc.",
->>>>>>> Stashed changes
   "ruok.quality.globalquality.set.ultra": "Ultra",
   "ruok.quality.globalquality.set.high": "High",
   "ruok.quality.globalquality.set.normal": "Normal",
   "ruok.quality.globalquality.set.low": "Low",
   "ruok.quality.globalquality.set.critical": "Very Low",
   "ruok.quality.globalquality.set.custom": "Custom",
-<<<<<<< Updated upstream
-  "ruok.quality.autoquality.info": "Auto Quality",
-  "ruok.quality.autoquality.tooltip": "This setting automatically adjusts your graphics quality based on your computer's performance. It checks every 30 seconds for a total of 6 times.",
-  "ruok.options.pages.ruok": "RuOK",
-  "ruok.quality.renderdistance.info": "Render Entity Distance",
-  "ruok.quality.renderdistance.tooltip": "Based on your settings, it creates a cube with your specified radius and only renders entities inside that cube.",
-  "ruok.quality.renderentity.info": "Entity Render Count",
-  "ruok.quality.renderentity.tooltip": "Based on your settings for 'Render Entity Distance,' it determines the number of entities currently being rendered.",
-  "ruok.quality.options.block": "%s Blocks",
-  "ruok.quality.options.entity": "%s Entities",
-  "ruok.quality.renderleaves.tooltip": "Cull Inside Leaves",
-  "ruok.quality.renderleaves.info": "Leaf Culling",
-  "ruok.quality.rendermangroveroots.info": "Mangrove Root Culling",
-  "ruok.quality.rendermangroveroots.tooltip": "Cull Inside Mangrove Roots",
-=======
   "ruok.quality.autoquality.info": "Auto Adjust Quality",
   "ruok.quality.autoquality.tooltip": "Click to check your CPU/memory/mod count and adjust accordingly",
   "ruok.quality.renderlivingdistance.info": "Render Entity Distance",
@@ -34,18 +15,12 @@
   "ruok.quality.renderlivingentity.tooltip": "Sets the number of entities rendered within the specified render distance cube",
   "ruok.quality.options.block": "%s blocks",
   "ruok.quality.options.lightingentity": "%s mobs",
->>>>>>> Stashed changes
   "ruok.key.reducedistance": "Reduce Render Distance",
   "ruok.key.adddistance": "Increase Render Distance",
   "ruok.key.addmaxentities": "Increase Max Entity Render Count",
   "ruok.key.reducemaxentities": "Reduce Max Entity Render Count",
   "ruok.key.reloadinvoker": "Reload Lighting",
   "ruok.key.value.add": "Adding",
-<<<<<<< Updated upstream
-  "ruok.key.value.error.max": "Unable to add/remove, value is already at maximum/minimum!",
-  "ruok.benchmark.value" : "Testing completed. Your current score is:",
-  "ruok.benchmark.run"  : "start test"
-=======
   "ruok.key.value.error.max": "Cannot increase or decrease, value is at maximum or none!",
   "ruok.benchmark.value": "Benchmark complete. Your current score is:",
   "ruok.benchmark.run": "Start Benchmark",
@@ -67,5 +42,4 @@
   "ruok.quality.renderweather.set.close": "Off",
   "ruok.quality.renderweather.set.normal": "Normal",
   "ruok.key.allentityrender": "Render All Entities"
->>>>>>> Stashed changes
 }

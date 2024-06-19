@@ -3,15 +3,6 @@
   "id": "ruok",
   "version": "${version}",
   "name": "RuOK Mod",
-<<<<<<< Updated upstream
-  "description": "This is an example description! Tell everyone what your mod is about!",
-  "authors": [
-    "Me!"
-  ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-=======
   "description": "",
   "authors": [
     "AweiMC",
@@ -20,18 +11,13 @@
   "contact": {
     "homepage": "https://github.com/MCTeamPotato/RuOK",
     "sources": "https://github.com/MCTeamPotato/RuOK/issues"
->>>>>>> Stashed changes
   },
   "license": "GPLv3",
   "icon": "assets/ruok/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-<<<<<<< Updated upstream
-      "team.teampotato.ruok.fabric.RuOKModFabric"
-=======
       "team.teampotato.ruok.fabric.RuOKFabric"
->>>>>>> Stashed changes
     ]
   },
   "mixins": [
@@ -40,10 +26,6 @@
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.19.2",
-<<<<<<< Updated upstream
-    "architectury": ">=6.5.77"
-=======
     "sodium": "*"
->>>>>>> Stashed changes
   }
 }
