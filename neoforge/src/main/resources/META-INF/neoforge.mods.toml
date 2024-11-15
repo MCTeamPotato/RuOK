@@ -1,0 +1,43 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+issueTrackerURL = "https://github.com/MCTeamPotato/RuOK/issues"
+license = "GPLv3"
+
+[[mods]]
+modId = "ruokmod"
+logoFile = "icon.png"
+version = "${version}"
+displayName = "RuOK Mod"
+authors = '''
+MCTeamPotato
+Awei
+Yuqi154
+'''
+description = '''
+Embeddium & Sodium Mod!
+'''
+[[mixins]]
+config = "RuOK.common.mixins.json"
+[[mixins]]
+config = "RuOK.mixins.json"
+
+[[dependencies.ruokmod]]
+modId = "neoforge"
+mandatory = true
+versionRange = "[21.1.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ruokmod]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.ruokmod]]
+modId = "cloth_config"
+mandatory = true
+versionRange = "[15.0.0,)"
+ordering = "AFTER"
+side = "CLIENT"
