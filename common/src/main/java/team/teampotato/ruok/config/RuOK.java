@@ -9,4 +9,5 @@ public interface RuOK {
     static RuOKConfig get() {
         return AutoConfig.getConfigHolder(RuOKConfig.class).getConfig();
     }
+    
 }

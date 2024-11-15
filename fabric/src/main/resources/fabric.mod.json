@@ -6,7 +6,8 @@
   "description": "",
   "authors": [
     "AweiMC",
-    "MCTeamPotato"
+    "MCTeamPotato",
+    "Yuqi154"
   ],
   "contact": {
     "homepage": "https://github.com/MCTeamPotato/RuOK",
@@ -25,7 +26,6 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.20.1",
-    "embeddium": "*"
+    "minecraft": ">=1.20.1"
   }
 }
