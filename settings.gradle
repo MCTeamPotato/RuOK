@@ -11,4 +11,4 @@ include("common")
 include("fabric")
 include("neoforge")
 
-rootProject.name = "RUOK-1.20.1"
+rootProject.name = "RUOK-1.21.1"

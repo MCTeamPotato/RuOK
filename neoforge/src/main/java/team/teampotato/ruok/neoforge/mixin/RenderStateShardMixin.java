@@ -13,9 +13,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(RenderStateShard.class)
 public class RenderStateShardMixin {
-    @Mutable @Final @Shadow protected static RenderStateShard.OutputStateShard ITEM_ENTITY_TARGET;
-    @Mutable @Final @Shadow protected static RenderStateShard.OutputStateShard TRANSLUCENT_TARGET;
-    @Mutable @Final @Shadow protected static RenderStateShard.OutputStateShard WEATHER_TARGET;
+    @Mutable @Final @Shadow public static RenderStateShard.OutputStateShard ITEM_ENTITY_TARGET;
+    @Mutable @Final @Shadow public static RenderStateShard.OutputStateShard TRANSLUCENT_TARGET;
+    @Mutable @Final @Shadow public static RenderStateShard.OutputStateShard WEATHER_TARGET;
 
     @Inject(method = "<clinit>", at = @At("RETURN"))
     private static void onClinit(CallbackInfo ci) {
