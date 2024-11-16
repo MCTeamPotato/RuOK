@@ -18,8 +18,6 @@ Embeddium & Sodium Mod!
 '''
 [[mixins]]
 config = "RuOK.common.mixins.json"
-[[mixins]]
-config = "RuOK.mixins.json"
 
 [[dependencies.ruokmod]]
 modId = "neoforge"

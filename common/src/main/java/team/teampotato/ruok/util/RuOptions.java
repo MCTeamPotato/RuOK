@@ -16,6 +16,7 @@ public class RuOptions {
     }
     public static void setGraphicsMode(GraphicsStatus value) {//画质
         mcgo.graphicsMode().set(value);
+        Minecraft.getInstance().levelRenderer.allChanged();
     }
     public static void setAo(Boolean value) {//平滑关照
         mcgo.ambientOcclusion().set(value);
