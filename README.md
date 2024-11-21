@@ -2,6 +2,9 @@
 
 # RuOK
 ![](common/src/main/resources/assets/ruok/icon.png)
+# RuOK
+<img src="common/src/main/resources/assets/ruok/icon.png" width="100" height="100">
+
 
 
 ## Links  
