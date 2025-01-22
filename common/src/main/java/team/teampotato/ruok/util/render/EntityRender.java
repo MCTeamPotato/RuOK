@@ -1,15 +1,12 @@
-package team.teampotato.ruok.util;
+package team.teampotato.ruok.util.render;
 
-import com.mojang.datafixers.util.Pair;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.network.chat.Component;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Ghast;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.teampotato.ruok.config.RuOK;
@@ -19,15 +16,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
-public class Render {
-    private static final HashSet<EntityType<?>> blackListCache = new HashSet<>();
-    private static final HashSet<EntityType<?>> whiteListCache = new HashSet<>();
+public class EntityRender {
+    private static final HashSet<EntityType<?>> blackEntityListCache = new HashSet<>();
+    private static final HashSet<EntityType<?>> whiteEntityListCache = new HashSet<>();
     private static int maxRenderedEntities; // 最大渲染生物数量
     private static double[] closestDistances; // 记录最近生物的距离
     private static Entity[] closestEntities; // 记录最近生物
+    private static final Minecraft mc = Minecraft.getInstance();
+
 
     static {
-        initMobList();
+        initConfigList();
         initializeArrays();
     }
 
@@ -41,51 +40,37 @@ public class Render {
     }
 
     // 初始化生物列表
-    private static void initMobList() {
+    private static void initConfigList() {
         List<String> blackConfig = RuOK.get().blackListedEntities;
         List<String> whiteConfig = RuOK.get().whiteListedEntities;
         for (String bc : blackConfig) {
-            Optional<EntityType<?>> entityTypeOpt = EntityType.byString(bc);
-            entityTypeOpt.ifPresent(blackListCache::add);
+            Optional<EntityType<?>> entityTypeOpt = entityTypeGet(bc);
+            entityTypeOpt.ifPresent(blackEntityListCache::add);
         }
         for (String wc : whiteConfig) {
-            Optional<EntityType<?>> entityTypeOpt = EntityType.byString(wc);
-            entityTypeOpt.ifPresent(whiteListCache::add);
+            Optional<EntityType<?>> entityTypeOpt = entityTypeGet(wc);
+            entityTypeOpt.ifPresent(whiteEntityListCache::add);
         }
     }
+    public static Optional<EntityType<?>> entityTypeGet(String id) {
+        return BuiltInRegistries.ENTITY_TYPE.getOptional(ResourceLocation.tryParse(id));
+    }
+
     // 重新加载生物列表
     public static void reloadList() {
         // 清空当前的缓存
-        blackListCache.clear();
-        whiteListCache.clear();
-
+        blackEntityListCache.clear();
+        whiteEntityListCache.clear();
         // 重新加载生物列表
-        initMobList();
+        initConfigList();
 
     }
 
     public static boolean isBlacklisted(@NotNull Entity entity) {
-        return blackListCache.contains(entity.getType()); // 返回 true 表示在黑名单中 - 删除渲染
+        return blackEntityListCache.contains(entity.getType()); // 返回 true 表示在黑名单中 - 删除渲染
     }
     public static boolean isWhitelisted(@NotNull Entity entity) {
-        return whiteListCache.contains(entity.getType()); // 返回 true 表示在白名单中 - 添加渲染
-    }
-
-    public static @NotNull Optional<Pair<Component, String>> getTotalCountForDisplay(@NotNull ItemEntity entity) {
-        ItemStack stack = entity.getItem();
-        int total = stack.getCount();
-        String itemName = stack.getDisplayName().getString(); // 获取物品名称
-
-        String displayText = getColorForCount(total) + itemName + "x" + total;
-
-        return !RuOK.get().isAlwaysShowItemCount && total <= stack.getMaxStackSize() ? Optional.of(Pair.of(Component.nullToEmpty(itemName), itemName)) : Optional.of(Pair.of(Component.nullToEmpty(displayText), displayText));
-    }
-
-    private static String getColorForCount(int count) {
-        if (count == 64) return Type.Color.Red;
-        else if (count > 32) return Type.Color.Orange;
-        else if (count > 16) return Type.Color.Green;
-        else return Type.Color.LightGreen;
+        return whiteEntityListCache.contains(entity.getType()); // 返回 true 表示在白名单中 - 添加渲染
     }
 
     // 重新加载方法，更新最大渲染生物数量
@@ -96,11 +81,12 @@ public class Render {
 
     public static void entityCull(Entity entity, CallbackInfo ci) {
         // 剔除功能,如果未开启就关闭
+        if(!RuOK.get().EntityRender) {
+            ci.cancel();
+            return;
+        }
         if(!RuOK.get().onCull) return;
-        Minecraft mc = Minecraft.getInstance();
-        ClientLevel world = mc.level;
-
-        if (world != null && mc.player != null) {
+        if (mc.level != null && mc.player != null) {
             double distanceToPlayer = entity.distanceToSqr(mc.player);
 
             // 白名单优先：如果实体在白名单中，则保留渲染
@@ -127,6 +113,7 @@ public class Render {
             }
         }
     }
+
 
     private static boolean updateClosestEntities(Entity entity, double distanceToPlayer) {
         int farthestIndex = -1;
@@ -166,5 +153,6 @@ public class Render {
     private static boolean isBossEntity(@NotNull Entity entity) {
         return entity instanceof Ghast || entity instanceof EnderDragon;
     }
+
 
 }

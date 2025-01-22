@@ -6,8 +6,8 @@ import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import team.teampotato.ruok.config.RuOK;
-import team.teampotato.ruok.gui.vanilla.mode.QualityMode;
-import team.teampotato.ruok.gui.vanilla.mode.WeatherMode;
+import team.teampotato.ruok.gui.vanilla.mode.QualityType;
+import team.teampotato.ruok.gui.vanilla.mode.WeatherType;
 import team.teampotato.ruok.gui.vanilla.options.sop.QualityModeOptions;
 import team.teampotato.ruok.gui.vanilla.options.sop.WeatherModeOptions;
 import team.teampotato.ruok.util.Render;
@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RuOptions {
-    private final OptionInstance<WeatherMode> weatherMode;
+    private final OptionInstance<WeatherType> weatherMode;
     private final OptionInstance<Integer> entityDistance;
     private final OptionInstance<Integer> entityCount;
     private final OptionInstance<Boolean> onCull;
-    private final OptionInstance<QualityMode> qualityMode;
+    private final OptionInstance<QualityType> qualityMode;
     private final OptionInstance<Boolean> runScore;
     private final OptionInstance<Boolean> chatFix;
     private final OptionInstance<Boolean> tntExplosions;
@@ -34,7 +34,7 @@ public class RuOptions {
         this.weatherMode = WeatherModeOptions.getWeatherModeOptionInstance();
         this.onCull = getOnCullOptions();
         this.entityCount = getEntityCountOptions();
-        this.qualityMode = QualityModeOptions.getQualityModeSimpleOption();
+        this.qualityMode = QualityModeOptions.getQualityModeOptionInstance();
         this.runScore = getRunCoreOptions();
         this.chatFix = getChatFixOptions();
         this.tntExplosions = getTNTExplosions();
@@ -83,9 +83,9 @@ public class RuOptions {
                 (value) -> Tooltip.create(Component.translatable("ruok.quality.distance.tooltip")),
                 (optionText, value) -> Options.genericValueLabel(optionText, Component.translatable("ruok.quality.options.block", value)),
                 new OptionInstance.IntRange(2, 512),
-                RuOK.get().entitiesDistance,
+                RuOK.get().EntitiesDistance,
                 (value) -> {
-                     RuOK.get().entitiesDistance = value;
+                     RuOK.get().EntitiesDistance = value;
                      RuOK.save();
                 });
     }
@@ -95,9 +95,9 @@ public class RuOptions {
                 (value) -> Tooltip.create(Component.translatable("ruok.quality.entity.tooltip")),
                 (optionText, value) -> Options.genericValueLabel(optionText, Component.translatable("ruok.quality.options.entity", value)),
                 new OptionInstance.IntRange(8, 1024),
-                RuOK.get().maxEntityEntities,
+                RuOK.get().MaxEntityEntities,
                 (value) -> {
-                    RuOK.get().maxEntityEntities = value;
+                    RuOK.get().MaxEntityEntities = value;
                     RuOK.save();
                     Render.reloadRenderEntity();
                 });
@@ -160,7 +160,7 @@ public class RuOptions {
     public OptionInstance<Integer> getEntityDistance() {
         return entityDistance;
     }
-    public OptionInstance<WeatherMode> getWeatherMode() {
+    public OptionInstance<WeatherType> getWeatherMode() {
         return weatherMode;
     }
     public OptionInstance<Boolean> getOnCull() {
@@ -171,7 +171,7 @@ public class RuOptions {
         return entityCount;
     }
 
-    public OptionInstance<QualityMode> getQualityMode() {
+    public OptionInstance<QualityType> getQualityMode() {
         return qualityMode;
     }
 

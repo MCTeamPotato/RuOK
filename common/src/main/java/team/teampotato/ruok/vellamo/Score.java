@@ -5,7 +5,7 @@ import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import team.teampotato.ruok.config.RuOK;
-import team.teampotato.ruok.gui.vanilla.mode.QualityMode;
+import team.teampotato.ruok.gui.vanilla.mode.QualityType;
 import team.teampotato.ruok.mixin.minecraft.accessor.MinecraftAccessor;
 import team.teampotato.ruok.util.Quality;
 import team.teampotato.ruok.util.ToastUtil;
@@ -40,19 +40,19 @@ public class Score {
     }
     private static @NotNull Component calculatePerformanceLevel(double score) {
         if (score > 90) {
-            Quality.set(QualityMode.ULTRA);
+            Quality.set(QualityType.ULTRA);
             return Component.translatable("ruok.quality.ultra");
         } else if (score > 70) {
-            Quality.set(QualityMode.HIGH);
+            Quality.set(QualityType.HIGH);
             return Component.translatable("ruok.quality.high");
         } else if (score > 50) {
-            Quality.set(QualityMode.NORMAL);
+            Quality.set(QualityType.NORMAL);
             return Component.translatable("ruok.quality.normal");
         } else if (score > 30) {
-            Quality.set(QualityMode.LOW);
+            Quality.set(QualityType.LOW);
             return Component.translatable("ruok.quality.low");
         } else {
-            Quality.set(QualityMode.CRITICAL);
+            Quality.set(QualityType.CRITICAL);
             return Component.translatable("ruok.quality.critical");
         }
     }

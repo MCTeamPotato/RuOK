@@ -7,17 +7,21 @@
     "defaultRequire": 1
   },
   "client": [
-    "minecraft.ChatHudMixin",
+    "minecraft.BiomeEffectSoundPlayerMixin",
     "minecraft.ClientPlayNetworkHandlerMixin",
     "minecraft.ClientWorldMixin",
     "minecraft.ExplosionEmitterParticleFactoryMixin",
-    "minecraft.ExplosionS2CPacketMixin",
     "minecraft.ItemEntityRendererMixin",
     "minecraft.MinecraftMixin",
+    "minecraft.ParticleManagerMixin",
     "minecraft.TntMinecartEntityRendererMixin",
     "minecraft.WorldRendererMixin",
     "minecraft.accessor.MinecraftAccessor",
+    "minecraft.gui.ChatHudMixin",
     "minecraft.gui.OptionsScreenMixin",
     "sodium.SodiumGUIMixin"
+  ],
+  "mixins": [
+    "minecraft.ExplosionS2CPacketMixin"
   ]
 }

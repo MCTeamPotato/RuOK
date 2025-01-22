@@ -2,25 +2,28 @@ package team.teampotato.ruok.gui.vanilla.screen;
 
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.options.OptionsSubScreen;
-import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import team.teampotato.ruok.gui.vanilla.options.RuOptions;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class RuOptionsScreen extends OptionsSubScreen {
-   // private OptionListWidget list;
-    private final OptionInstance<?>[] ruoptions = new RuOptions().getOptions();
+    //private OptionListWidget olist;
+    private final OptionInstance<?>[] ruoptions;
+    protected Component title;
 
-    public RuOptionsScreen(Screen parent, Options options) {
-        super(parent, options, Component.translatable("ruok.options.pages.ruok.main"));
+    public RuOptionsScreen(Component title, Screen parent, Options options, @NotNull List<OptionInstance<?>> list) {
+        super(parent, options,title);
+        this.ruoptions = list.toArray(OptionInstance[]::new);
     }
 
     @Override
     protected void addOptions() {
-        this.list.addSmall(ruoptions);
+        if (this.list != null) {
+            this.list.addSmall(ruoptions);
+        }
     }
 
     @Override
@@ -35,20 +38,6 @@ public class RuOptionsScreen extends OptionsSubScreen {
             return true;
         } else return false;
 
-    }
-
-    @Override
-    protected void addFooter() {
-        LinearLayout linearLayout = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
-        linearLayout.addChild(Button.builder(Component.translatable("ruok.options.entity.list"), (button) -> {
-            if (this.minecraft != null) {
-                this.minecraft.options.save();
-                this.minecraft.setScreen(new OtherOptions(this));  // 进入 OtherOptions 界面
-            }
-        }).build());
-        linearLayout.addChild(Button.builder(CommonComponents.GUI_DONE, (button) -> {
-            this.minecraft.setScreen(this.lastScreen);
-        }).build());
     }
 
 }

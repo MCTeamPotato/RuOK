@@ -1,2 +1,4 @@
 accessWidener   v2  named
+accessible field net/minecraft/client/gui/screens/options/OptionsScreen options Lnet/minecraft/client/Options;
 accessible class net/minecraft/client/Minecraft$GameLoadCookie
+#accessible method net/minecraft/client/particle/ParticleManager createParticle (Lnet/minecraft/particle/ParticleEffect;DDDDDD)Lnet/minecraft/client/particle/Particle;

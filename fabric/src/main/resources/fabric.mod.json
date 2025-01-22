@@ -22,10 +22,11 @@
     ]
   },
   "mixins": [
-    "RuOK.common.mixins.json"
+    "RuOK.common.mixins.json",
+    "RuOK.fabric.mixins.json"
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.20.1"
+    "minecraft": ">=1.21"
   }
 }

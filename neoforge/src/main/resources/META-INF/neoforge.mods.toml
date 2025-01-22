@@ -22,7 +22,7 @@ config = "RuOK.common.mixins.json"
 [[dependencies.ruokmod]]
 modId = "neoforge"
 mandatory = true
-versionRange = "[21.1.0,)"
+versionRange = "[21.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 

@@ -11,7 +11,7 @@ import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import team.teampotato.ruok.config.RuOK;
-import team.teampotato.ruok.gui.vanilla.mode.QualityMode;
+import team.teampotato.ruok.gui.vanilla.mode.QualityType;
 import team.teampotato.ruok.util.Quality;
 import team.teampotato.ruok.util.Render;
 import team.teampotato.ruok.vellamo.Score;
@@ -42,10 +42,10 @@ public class SodiumOptions {
                 .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                 .build();
 
-        OptionImpl<SodiumGameOptions, QualityMode> globalQuality = OptionImpl.createBuilder(QualityMode.class,OptionsStorage.getSodiumOpts())
+        OptionImpl<SodiumGameOptions, QualityType> globalQuality = OptionImpl.createBuilder(QualityType.class,OptionsStorage.getSodiumOpts())
                 .setName(Component.translatable("ruok.quality.global.info"))
                 .setTooltip(Component.translatable("ruok.quality.global.tooltip"))
-                .setControl((option) -> new CyclingControl<>(option, QualityMode.class, new Component[] {
+                .setControl((option) -> new CyclingControl<>(option, QualityType.class, new Component[] {
                         Component.translatable("ruok.quality.critical"),
                         Component.translatable("ruok.quality.low"),
                         Component.translatable("ruok.quality.normal"),
@@ -55,10 +55,10 @@ public class SodiumOptions {
                 .setBinding(
                         (opts, value) -> {
                             Quality.set(value);
-                            RuOK.get().QualityModes = value;
+                            RuOK.get().qualityModes = value;
                             RuOK.save();
                         },
-                        (opts) -> RuOK.get().QualityModes // 获取当前配置类中的 qualityMode 字段值
+                        (opts) -> RuOK.get().qualityModes // 获取当前配置类中的 qualityMode 字段值
                 )
                 .setImpact(OptionImpact.HIGH)
                 .build();
@@ -68,10 +68,10 @@ public class SodiumOptions {
                 .setControl(option -> new SliderControl(option, 4, 512, 1, ControlValueFormatter.translateVariable("ruok.quality.options.block")))
                 .setBinding(
                         (options, value) -> {
-                            RuOK.get().entitiesDistance = value;
+                            RuOK.get().EntitiesDistance = value;
                             RuOK.save();
                         },
-                        (options) -> RuOK.get().entitiesDistance
+                        (options) -> RuOK.get().EntitiesDistance
 
                 )
                 .setImpact(OptionImpact.LOW)
@@ -84,11 +84,11 @@ public class SodiumOptions {
                 .setControl(option -> new SliderControl(option, 8, 1024, 8, ControlValueFormatter.translateVariable("ruok.quality.options.entity")))
                 .setBinding(
                         (options, value) -> {
-                            RuOK.get().maxEntityEntities = value;
+                            RuOK.get().MaxEntityEntities = value;
                             RuOK.save();
                             Render.reloadRenderEntity();
                         },
-                        (options) -> RuOK.get().maxEntityEntities
+                        (options) -> RuOK.get().MaxEntityEntities
 
                 )
                 .setImpact(OptionImpact.LOW)

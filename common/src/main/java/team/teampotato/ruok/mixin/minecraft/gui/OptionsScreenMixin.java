@@ -13,19 +13,20 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import team.teampotato.ruok.gui.vanilla.screen.OtherOptions;
-import team.teampotato.ruok.gui.vanilla.screen.RuOptionsScreen;
-import team.teampotato.ruok.util.ClassCheck;
+import team.teampotato.ruok.config.RuOK;
+import team.teampotato.ruok.gui.vanilla.RuOKScreens;
+import team.teampotato.ruok.gui.vanilla.screen.ListScreen;
+import team.teampotato.ruok.util.ModLoadState;
 
 import java.util.function.Supplier;
 
 @Mixin(OptionsScreen.class)
 public abstract class OptionsScreenMixin extends Screen {
 
-
     @Shadow protected abstract Button openScreenButton(Component message, Supplier<Screen> screenSupplier);
 
-    @Shadow @Final private Options options;
+    @Shadow @Final
+    public Options options;
 
     protected OptionsScreenMixin(Component title) {
         super(title);
@@ -33,13 +34,16 @@ public abstract class OptionsScreenMixin extends Screen {
 
     @Inject(method = "init()V", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/client/gui/layouts/GridLayout$RowHelper;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;",
-            shift = At.Shift.AFTER, ordinal = 9))
-    private void insertCustomButton(CallbackInfo ci, @Local GridLayout.RowHelper adder) {
-        // 在特定位置插入自定义按钮
-        if(ClassCheck.isLoad("me.jellysquid.mods.sodium.client.SodiumClientMod")) {
-            adder.addChild(this.openScreenButton(Component.translatable("ruok.options.entity.list"), () -> new OtherOptions(this)));
+            shift = At.Shift.AFTER, ordinal = 9)
+    )
+    private void onInit(CallbackInfo ci, @Local GridLayout.RowHelper adder) {
+        // 如果玩家加载了Sodium模组，且不希望使用VanillaGui，显示ListScreen
+        if (ModLoadState.isSodium() && !RuOK.get().UseVanillaGui) {
+            adder.addChild(this.openScreenButton(Component.translatable("ruok.options.entity.list"), () -> new ListScreen(Component.translatable("ruok.setting.list"), this, this.options)));
         } else {
-            adder.addChild(this.openScreenButton(Component.translatable("ruok.options.gui.ruok"), () -> new RuOptionsScreen(this, this.options)));
+            // 默认或Sodium加载且希望使用RuOK界面，显示RuOKScreens
+            adder.addChild(this.openScreenButton(Component.translatable("ruok.options.gui.ruok"), () -> new RuOKScreens(this, this.options)));
         }
     }
+
 }

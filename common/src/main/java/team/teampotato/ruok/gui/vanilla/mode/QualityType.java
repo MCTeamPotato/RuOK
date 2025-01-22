@@ -5,7 +5,7 @@ import net.minecraft.util.OptionEnum;
 
 import java.util.function.IntFunction;
 
-public enum QualityMode implements OptionEnum {
+public enum QualityType implements OptionEnum {
    // ULTRA(),HIGH,NORMAL,LOW,CRITICAL
     CRITICAL(0, "ruok.quality.close"),
     LOW(1, "ruok.quality.low"),
@@ -13,11 +13,11 @@ public enum QualityMode implements OptionEnum {
     HIGH(3,"ruok.quality.high"),
     ULTRA(4,"ruok.quality.ultra");
 
-    private static final IntFunction<QualityMode> BY_ID = ByIdMap.continuous(QualityMode::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
+    private static final IntFunction<QualityType> BY_ID = ByIdMap.continuous(QualityType::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
     private final int id;
     private final String translationKey;
 
-    QualityMode(int id, String translationKey) {
+    QualityType(int id, String translationKey) {
         this.id = id;
         this.translationKey = translationKey;
     }
@@ -55,7 +55,7 @@ public enum QualityMode implements OptionEnum {
         return "close";
     }
 
-    public static QualityMode byId(int id) {
+    public static QualityType byId(int id) {
         return BY_ID.apply(id);
     }
 }

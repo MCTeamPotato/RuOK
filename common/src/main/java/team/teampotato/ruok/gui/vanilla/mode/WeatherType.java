@@ -6,16 +6,16 @@ import net.minecraft.util.OptionEnum;
 import java.util.function.IntFunction;
 
 
-public enum WeatherMode implements OptionEnum {
+public enum WeatherType implements OptionEnum {
     CLOSE(0, "ruok.quality.close"),
     LOW(1, "ruok.quality.low"),
     NORMAL(2,"ruok.quality.normal");//Button 2 Name
 
-    private static final IntFunction<WeatherMode> BY_ID = ByIdMap.continuous(WeatherMode::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
+    private static final IntFunction<WeatherType> BY_ID = ByIdMap.continuous(WeatherType::getId, values(), ByIdMap.OutOfBoundsStrategy.WRAP);
     private final int id;
     private final String translationKey;
 
-    WeatherMode(int id, String translationKey) {
+    WeatherType(int id, String translationKey) {
         this.id = id;
         this.translationKey = translationKey;
     }
@@ -47,7 +47,7 @@ public enum WeatherMode implements OptionEnum {
         }
     }
 
-    public static WeatherMode byId(int id) {
+    public static WeatherType byId(int id) {
         return BY_ID.apply(id);
     }
 }
